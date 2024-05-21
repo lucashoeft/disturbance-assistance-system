@@ -17,5 +17,5 @@ services:
     develop:
       watch:
         - action: sync
-          path: .
+          path: ./streamlit
           target: /streamlit
