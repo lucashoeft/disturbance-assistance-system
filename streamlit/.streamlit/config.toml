@@ -1,4 +1,23 @@
+[client]
+
+# Change the visibility of items in the toolbar, options menu, and settings dialog (top right of the app).
+toolbarMode = "minimal"
+
+# Controls whether the default sidebar page navigation in a multipage app is displayed.
+showSidebarNavigation = true
+
 [server]
-headless = true
-runOnSave = true
+
+# Change the type of file watcher used by Streamlit, or turn it off completely.
 fileWatcherType = "poll"
+
+# If false, will attempt to open a browser window on start.
+headless = true
+
+# Automatically rerun script when the file is modified on disk.
+runOnSave = true
+
+[browser]
+
+# Whether to send usage statistics to Streamlit.
+gatherUsageStats = false

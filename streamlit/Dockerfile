@@ -2,6 +2,9 @@ FROM python:3.9-slim
 
 WORKDIR /streamlit
 
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
@@ -10,7 +13,6 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . .
-# RUN git clone https://github.com/streamlit/streamlit-example.git .
 
 RUN pip3 install -r requirements.txt
 

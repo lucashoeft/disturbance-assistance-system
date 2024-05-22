@@ -1,1 +1,9 @@
 streamlit
+python-dotenv
+langchain_core
+langchain_community
+openai
+langchain_postgres
+psycopg
+psycopg[binary,pool]
+langchain_openai
