@@ -8,7 +8,7 @@ with st.sidebar:
         st.write("This code will be printed to the sidebar.")
 
     with st.spinner("Loading..."):
-        time.sleep(5)
+        time.sleep(1)
     
     st.success("Done!")
 

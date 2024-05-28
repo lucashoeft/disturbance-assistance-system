@@ -5,6 +5,8 @@ st.set_page_config(
    page_icon="🏭"
 )
 
-st.header('Hello')
+st.header('Assistenzsystem')
 
-st.header('Mother')
+st.text('Behebung von Störungen')
+
+st.write("Behebungen von Störungen")
