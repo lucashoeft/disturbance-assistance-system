@@ -5,5 +5,7 @@ langchain_community
 openai
 langchain_postgres
 psycopg
+psycopg-binary
 psycopg[binary,pool]
 langchain_openai
+langchain-postgres
