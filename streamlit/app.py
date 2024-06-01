@@ -7,6 +7,6 @@ st.set_page_config(
 
 st.header('Assistenzsystem')
 
-st.text('Behebung von Störungen')
+# st.text('Behebung von Störungen')
 
 st.write("Behebungen von Störungen")

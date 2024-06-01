@@ -86,6 +86,11 @@ if prompt:
     st.chat_message("human").write(prompt)
     
     # new messages are saved to history automatically by Langchain during run
-    config = {"configurable": {"session_id": "any"}}
+    config = {"configurable": {"session_id": session_id}}
     response = chain_with_history.invoke({"question": prompt}, config)
     st.chat_message("ai").write(response.content)
+
+    # message streaming (issues with profile pictures)
+    # with st.chat_message("ai"):
+    #     response1 = chain_with_history.stream({"question": prompt}, config)
+    #     st.write_stream(response1)

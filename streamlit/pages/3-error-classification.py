@@ -16,6 +16,8 @@ def classifyError():
     st.session_state.output_text = out
     # st.text(out.content)
 
+st.header("Error Classification")
+
 st.text_area(
         "Prompt ",
         "Classify the disturbance based on following scale: 1 is is all good, 10 is everthing is bad. Write short explanation why you think like that.",
