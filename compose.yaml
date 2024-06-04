@@ -10,6 +10,24 @@ services:
         POSTGRES_USER: admin
         POSTGRES_PASSWORD: admin
         POSTGRES_DB: vectordb
+      healthcheck:
+        test: ["CMD-SHELL", "pg_isready --username=admin --dbname=langfuse"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+  langfuse:
+      image: "langfuse/langfuse:2"
+      environment:
+        - DATABASE_URL=postgresql://admin:admin@postgres:5432/langfuse
+        - NEXTAUTH_URL=http://localhost:3000
+        - NEXTAUTH_SECRET=mysecret
+        - SALT=mysalt
+      ports:
+      - "3000:3000"
+      depends_on:
+        postgres:
+          condition: service_healthy
+      restart: always
   streamlit:
     build: ./streamlit
     ports:
