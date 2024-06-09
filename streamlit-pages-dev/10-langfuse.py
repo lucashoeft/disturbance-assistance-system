@@ -14,7 +14,7 @@ LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
 langfuse_handler = CallbackHandler(
     public_key=LANGFUSE_PUBLIC_KEY,
     secret_key=LANGFUSE_SECRET_KEY,
-    host="http://172.18.0.4:3000"
+    host="http://172.20.0.4:3000"
 )
  
 prompt1 = ChatPromptTemplate.from_template("what is the city {person} is from?")

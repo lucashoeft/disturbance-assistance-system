@@ -4,25 +4,37 @@ import time
 with st.sidebar:
     st.button("Create New Error")
 
-    with st.echo():
-        st.write("This code will be printed to the sidebar.")
-
-    with st.spinner("Loading..."):
-        time.sleep(1)
+    add_selectbox = st.sidebar.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone")
+    )
     
-    st.success("Done!")
+    col1, col2, col3 = st.columns(3)
 
-st.page_link("pages/error-classification.py", label="Error Classification", icon="1️⃣")
+    with col1:
+        st.header("A cat")
+        st.image("https://static.streamlit.io/examples/cat.jpg")
 
-st.radio(
-            "Radio Buttons",
-            options=["Option 1", "Option 2", "Option 3"],
+    with col2:
+        st.header("A dog")
+        st.image("https://static.streamlit.io/examples/dog.jpg")
 
-)
+    with col3:
+        st.header("An owl")
+        st.image("https://static.streamlit.io/examples/owl.jpg")
 
-st.button("Click Me")
+st.page_link("pages/3-error-classification.py", label="Error Classification")
 
-st.text_input(
-            "Text Input Widget",
-            "This is a placeholder",
-)
+tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
+
+with tab1:
+   st.header("A cat")
+   st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+
+with tab2:
+   st.header("A dog")
+   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+
+with tab3:
+   st.header("An owl")
+   st.image("https://static.streamlit.io/examples/owl.jpg", width=200)

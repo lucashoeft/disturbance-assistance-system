@@ -57,7 +57,7 @@ session_id = str(random_uuid)
 langfuse_handler = CallbackHandler(
     public_key=LANGFUSE_PUBLIC_KEY,
     secret_key=LANGFUSE_SECRET_KEY,
-    host="http://172.18.0.4:3000",
+    host="http://172.20.0.4:3000",
     session_id=session_id,
     user_id=st.session_state.db_user_id
 )
