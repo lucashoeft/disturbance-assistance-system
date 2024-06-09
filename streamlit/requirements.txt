@@ -8,6 +8,8 @@ langchain-postgres
 langgraph
 openai
 psycopg
+psycopg2-binary
 psycopg-binary
 psycopg[binary,pool]
 langfuse
+paho-mqtt
