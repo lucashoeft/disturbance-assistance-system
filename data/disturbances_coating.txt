@@ -1,0 +1,95 @@
+Error Description: Insufficient Coating Thickness
+Error Code: E101
+Cause: Incorrect parameters set
+Resolution Steps:
+
+1. Check the set coating parameters.
+2. Adjust the settings according to the specifications.
+3. Perform a test run to confirm the correction.
+
+
+Error Description: Low Coolant Level
+Error Code: E102
+Cause: Coolant not sufficiently refilled
+Resolution Steps:
+
+1. Refill the coolant to the prescribed level.
+2. Check the cooling system for leaks or blockages.
+
+
+Error Description: Overpressure in Coating System
+Error Code: E103
+Cause: Blockage in the pressure system
+Resolution Steps:
+
+1. Stop the machine immediately.
+2. Check and clean the pressure lines and filters.
+3. Reset the machine and restart the process.
+
+
+Error Description: Temperature Too High
+Error Code: E104
+Cause: Fault in cooling system or insufficient cooling
+Resolution Steps:
+
+1. Check the cooling system for proper function.
+2. Ensure coolant level is adequate.
+3. Restart the machine after it has cooled down.
+
+
+Error Description: Coating Material Empty
+Error Code: E105
+Cause: Coating material not refilled in time
+Resolution Steps:
+
+1. Refill the coating material as per instructions.
+2. Regularly check the level to prevent future outages.
+
+
+Error Description: Power Outage
+Error Code: E106
+Cause: Interruption of power supply
+Resolution Steps:
+
+1. Check the power supply and fuses.
+2. Reset the machine after restoring the power supply.
+
+
+Error Description: Sensor Error
+Error Code: E107
+Cause: Defective or dirty sensor
+Resolution Steps:
+
+1. Clean the affected sensor.
+2. Replace the sensor if necessary.
+3. Test the sensor function through a test run.
+
+
+Error Description: Uneven Coating
+Error Code: E108
+Cause: Improper setting of coating parameters or machine calibration
+Resolution Steps:
+
+1. Recalibrate the machine.
+2. Ensure coating parameters are set correctly.
+3. Perform a test run to confirm the correction.
+
+
+Error Description: Vacuum Loss
+Error Code: E109
+Cause: Leak in the vacuum system
+Resolution Steps:
+
+1. Check the vacuum system for leaks and seal them.
+2. Ensure all seals are intact.
+3. Restart the coating process after fixing the issue.
+
+
+Error Description: Unknown Error
+Error Code: E110
+Cause: System error or software problem
+Resolution Steps:
+
+1. Restart the machine.
+2. Check the system for software updates or errors.
+3. Contact technical support if the error persists.
