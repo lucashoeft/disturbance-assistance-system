@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import psycopg
 from langchain_postgres.chat_message_histories import PostgresChatMessageHistory
@@ -8,6 +9,10 @@ from typing import Optional
 import random
 import uuid
 import psycopg2
+from langfuse.callback import CallbackHandler
+
+LANGFUSE_PUBLIC_KEY = os.getenv('LANGFUSE_PUBLIC_KEY')
+LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
 
 class Disturbance(BaseModel):
     disturbance_name: Optional[str] = Field(
@@ -45,6 +50,15 @@ rnd.seed(st.session_state.db_session_id) # NOTE: Of course don't use a static se
 random_uuid = uuid.UUID(int=rnd.getrandbits(128), version=4)
 session_id = str(random_uuid)
 
+langfuse_handler = CallbackHandler(
+    public_key=LANGFUSE_PUBLIC_KEY,
+    secret_key=LANGFUSE_SECRET_KEY,
+    host="http://172.20.0.4:3000",
+    session_id=session_id
+)
+
+config = {"callbacks":[langfuse_handler]}
+
 history = PostgresChatMessageHistory(
     table_name,
     session_id,
@@ -59,7 +73,7 @@ st.write(history.get_messages())
 
 structured_model = model.with_structured_output(Disturbance)
 
-st.session_state.extraction = structured_model.invoke(history.get_messages())
+# st.session_state.extraction = structured_model.invoke(history.get_messages())
 
 # Create a MessagesPlaceholder for the chat history
 history_placeholder = MessagesPlaceholder("history")
@@ -81,7 +95,7 @@ llm2 = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 
 runnabl2 = prompt | llm2.with_structured_output(schema=Disturbance)
 
-st.session_state.extraction2 = runnabl2.invoke({ "history": history.get_messages() })
+st.session_state.extraction2 = runnabl2.invoke({ "history": history.get_messages() }, config=config)
 
 def submitDisturbance():
     print(st.session_state)
@@ -113,6 +127,8 @@ with col1:
 with col2:
     st.time_input(label="Start Time")
     st.time_input(label="End Time")
+
+st.selectbox(label="Status", options=["Open", "Resolved"])
 
 st.button("Submit Disturbance", on_click=submitDisturbance)
 
