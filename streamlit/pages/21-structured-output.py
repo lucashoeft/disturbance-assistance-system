@@ -3,7 +3,8 @@ from typing import Optional
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_openai import ChatOpenAI
 import psycopg2
-from psycopg2.sql import Identifier, SQL
+import os
+from langfuse.callback import CallbackHandler
 
 conn = psycopg2.connect(database = "postgres",
                         user = "admin",
@@ -15,16 +16,6 @@ st.set_page_config(
    page_icon="https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b7/Crafting_Table_JE4_BE3.png"
 )
 
-hide_decoration_bar_style = '''
-    <style>
-         header {visibility: hidden;}
-         [data-testid="stSidebarCollapseButton"] {visibility: hidden;}
-    </style>
-'''
-st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
-
-st.logo("https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b7/Crafting_Table_JE4_BE3.png")
-
 class Disturbance(BaseModel):
     disturbance_name: Optional[str] = Field(
         default=None, description="The name or description of the disturbance or error."
@@ -32,10 +23,6 @@ class Disturbance(BaseModel):
 
 model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 structured_llm = model.with_structured_output(Disturbance)
-
-
-import os
-from langfuse.callback import CallbackHandler
 
 LANGFUSE_PUBLIC_KEY = os.getenv('LANGFUSE_PUBLIC_KEY')
 LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
@@ -63,7 +50,6 @@ def click_extraction():
 
 st.button('Click me', on_click=click_extraction)
 
-# st.write()
 st.divider()
 
 st.text_input(label="Disturbance", key="disturbance_name", value=st.session_state.extraction.disturbance_name)
@@ -71,10 +57,10 @@ st.text_input(label="Disturbance", key="disturbance_name", value=st.session_stat
 col1, col2 = st.columns(2)
 
 with col1:
-    st.date_input(label="Start Point")
+    st.date_input(label="Start Date")
 
 with col2:
-    st.time_input(label="Start Point")
+    st.time_input(label="Start Time")
 
 import time
 
