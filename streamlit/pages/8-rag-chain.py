@@ -1,47 +1,24 @@
 import os
 import dotenv
 import streamlit as st
-
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain_community.chat_message_histories import ChatMessageHistory
-from langchain_community.document_loaders import WebBaseLoader
-from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-
 from langchain_postgres import PGVector
 from langchain_postgres.vectorstores import PGVector
+from langchain_postgres.chat_message_histories import PostgresChatMessageHistory
 import uuid
 import psycopg
-
-import streamlit as st 
-import langchain
-from langchain_postgres.chat_message_histories import PostgresChatMessageHistory
-from langchain_core.messages import SystemMessage, AIMessage, HumanMessage
-
-import os
-import streamlit as st
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-# from langchain_community.chat_models import ChatOpenAI
-from langchain_community.chat_message_histories import StreamlitChatMessageHistory
 import random
 from langfuse.callback import CallbackHandler
-import langfuse
-
-# https://python.langchain.com/v0.2/docs/tutorials/qa_chat_history/
 
 dotenv.load_dotenv()
 
 OPEN_API_KEY = os.getenv('OPEN_AI_API_KEY')
 LANGFUSE_PUBLIC_KEY = os.getenv('LANGFUSE_PUBLIC_KEY')
 LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
-
-print(LANGFUSE_PUBLIC_KEY)
 
 if 'db_session_id' not in st.session_state:
     st.session_state['db_session_id'] = '1'
@@ -65,12 +42,10 @@ langfuse_handler = CallbackHandler(
 llm = ChatOpenAI(model="gpt-3.5-turbo-0125")
 
 connection = "postgresql+psycopg://admin:admin@postgres:5432/vectordb"  # Uses psycopg3!
-collection_name = "my_docs"
-embeddings = OpenAIEmbeddings()
 
 vectorstore = PGVector(
-    embeddings=embeddings,
-    collection_name=collection_name,
+    embeddings=OpenAIEmbeddings(),
+    collection_name="my_docs",
     connection=connection,
     use_jsonb=True,
 )
@@ -102,11 +77,12 @@ system_prompt = (
     "You are an assistant for question-answering tasks. "
     "Use the following pieces of retrieved context to answer "
     "the question. If you don't know the answer, say that you "
-    "don't know. Use three sentences maximum and keep the "
-    "answer concise."
+    "don't know. If multiple context information seem relevant list all of them"
     "\n\n"
     "{context}"
 )
+
+# Use three sentences maximum and keep the "answer concise.
 
 qa_prompt = ChatPromptTemplate.from_messages(
     [
@@ -138,22 +114,16 @@ conversational_rag_chain = RunnableWithMessageHistory(
     output_messages_key="answer",
 )
 
+col1, col2 = st.columns(2)
+
+with col1:
+    text_input = st.text_input("DB Session ID", key="db_session_id")
+
+with col2:
+    text_input = st.text_input("DB User ID", key="db_user_id")
+
 if len(history.messages) == 0:
     history.add_ai_message("I'm a technical assistance system, how can I help you?")
-
-"""
-chain_with_history = RunnableWithMessageHistory(
-    chain,
-    lambda session_id: history,
-    input_messages_key="question",
-    history_messages_key="history"
-)
-"""
-
-text_input = st.text_input("DB Session ID", key="db_session_id")
-
-text_input = st.text_input("DB User ID", key="db_user_id")
-
 
 for msg in history.messages:
     st.chat_message(msg.type).write(msg.content)

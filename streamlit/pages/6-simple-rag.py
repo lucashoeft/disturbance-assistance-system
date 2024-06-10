@@ -30,6 +30,11 @@ def classifyError():
     st.session_state.rag_output = out
     # st.text(out.content)
 
+st.set_page_config(
+   page_title="Simple RAG - Assistenzsystem",
+   page_icon="https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b7/Crafting_Table_JE4_BE3.png"
+)
+
 st.header("Simple RAG")
 
 st.text_input(
@@ -38,6 +43,6 @@ st.text_input(
         key="rag_input",
 )
 
-st.button("Get Feedback to Error", use_container_width=True, on_click=classifyError)
+st.button("Get Information", use_container_width=True, on_click=classifyError)
 
 st.write(st.session_state.rag_output)

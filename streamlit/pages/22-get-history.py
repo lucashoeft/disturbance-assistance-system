@@ -97,24 +97,26 @@ def submitDisturbance():
     # successMessage = st.success("success")
     st.toast("Disturbance successfully added to the database!")
 
+st.subheader("Extracted Information")
+st.caption("(based on chat history with instructions)")
+st.text_input(label="Disturbance Name", key="disturbance_name2", value=st.session_state.extraction2.disturbance_name)
+st.text_area(label="Disturbance Cause", key="disturbance_cause2", value=st.session_state.extraction2.disturbance_cause)
+st.text_area(label="Disturbance Resolution", key="disturbance_resolution2", value=st.session_state.extraction2.disturbance_resolution)
+
+
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Version 1")
-    st.caption("(only chat history)")
-    st.text_input(label="Disturbance Name", key="disturbance_name", value=st.session_state.extraction.disturbance_name)
-    st.text_area(label="Disturbance Cause", key="disturbance_cause", value=st.session_state.extraction.disturbance_cause)
-    st.text_area(label="Disturbance Resolution", key="disturbance_resolution", value=st.session_state.extraction.disturbance_resolution)
+    st.date_input(label="Start Date")
+    st.date_input(label="End Date")
 
 with col2:
-    st.subheader("Version 2")
-    st.caption("(chat history with instructions)")
-    st.text_input(label="Disturbance Name", key="disturbance_name2", value=st.session_state.extraction2.disturbance_name)
-    st.text_area(label="Disturbance Cause", key="disturbance_cause2", value=st.session_state.extraction2.disturbance_cause)
-    st.text_area(label="Disturbance Resolution", key="disturbance_resolution2", value=st.session_state.extraction2.disturbance_resolution)
-    st.button("Submit Disturbance", on_click=submitDisturbance)
+    st.time_input(label="Start Time")
+    st.time_input(label="End Time")
 
-    # st.text_input(label="Start", value=str(history.get_messages()[0].to_json))
+st.button("Submit Disturbance", on_click=submitDisturbance)
+
+# st.text_input(label="Start", value=str(history.get_messages()[0].to_json))
 
 # st.text_input(label="Disturbance", key="disturbance_name", value=st.session_state.extraction.disturbance_name)
 
