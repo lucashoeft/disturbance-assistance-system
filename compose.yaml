@@ -40,3 +40,25 @@ services:
         - action: sync
           path: ./streamlit
           target: /streamlit
+  gradio:
+    build: ./gradio
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    develop:
+      watch:
+        - action: sync
+          path: ./gradio
+          target: /gradio
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    develop:
+      watch:
+        - action: sync
+          path: ./backend/app
+          target: /code/app
