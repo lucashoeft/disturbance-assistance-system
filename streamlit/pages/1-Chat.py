@@ -21,10 +21,13 @@ LANGFUSE_PUBLIC_KEY = os.getenv('LANGFUSE_PUBLIC_KEY')
 LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
 
 if 'db_session_id' not in st.session_state:
-    st.session_state['db_session_id'] = '1'
+    try:
+        st.session_state['db_session_id'] = st.query_params.sessionId
+    except:
+        st.session_state['db_session_id'] = 'chat_session_1'
 
 if 'db_user_id' not in st.session_state:
-    st.session_state['db_user_id'] = '1'
+    st.session_state['db_user_id'] = 'user1'
 
 rnd = random.Random()
 rnd.seed(st.session_state.db_session_id) # NOTE: Of course don't use a static seed in production
@@ -34,7 +37,7 @@ session_id = str(random_uuid)
 langfuse_handler = CallbackHandler(
     public_key=LANGFUSE_PUBLIC_KEY,
     secret_key=LANGFUSE_SECRET_KEY,
-    host="http://172.20.0.4:3000",
+    host="http://172.27.0.4:3000",
     session_id=session_id,
     user_id=st.session_state.db_user_id
 )
@@ -51,6 +54,15 @@ vectorstore = PGVector(
 )
 
 retriever = vectorstore.as_retriever()
+
+st.set_page_config(
+    # initial_sidebar_state="collapsed",
+    layout="wide",
+    page_title="Chat - Assistenzsystem",
+    page_icon="https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b7/Crafting_Table_JE4_BE3.png"
+)
+
+st.header("Chat", anchor=False)
 
 ### Contextualize question ###
 contextualize_q_system_prompt = (
@@ -117,18 +129,22 @@ conversational_rag_chain = RunnableWithMessageHistory(
 col1, col2 = st.columns(2)
 
 with col1:
-    text_input = st.text_input("DB Session ID", key="db_session_id")
+    text_input = st.text_input("Chat Session ID", key="db_session_id")
 
 with col2:
-    text_input = st.text_input("DB User ID", key="db_user_id")
+    text_input = st.text_input("Nutzer ID", key="db_user_id")
+
+# st.markdown('<button href="/?key=value" target="_self">View all</a>',unsafe_allow_html=True)
+
+st.page_link("http://localhost:8501/Dokumentation?sessionId=" + st.session_state.db_session_id, label="Störung dokumentieren")
 
 if len(history.messages) == 0:
-    history.add_ai_message("I'm a technical assistance system, how can I help you?")
+    history.add_ai_message("Hey! I'm happy to answer any question you have about the machines, processes and disturbances of the production.")
 
 for msg in history.messages:
     st.chat_message(msg.type).write(msg.content)
 
-user_input = st.chat_input("Say something")
+user_input = st.chat_input("Sende eine Nachricht an das Assistenzsystem")
 
 if user_input:
     st.chat_message("human").write(user_input)

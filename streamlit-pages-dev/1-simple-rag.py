@@ -36,6 +36,7 @@ st.set_page_config(
 )
 
 st.header("Simple RAG")
+st.caption("(Only based on similarity search, no LLM usage)")
 
 st.text_input(
         "Input",
