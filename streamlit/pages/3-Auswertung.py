@@ -51,7 +51,11 @@ yesterday_messages = len(df[df['created_at_dt'].dt.date == datetime.date.today()
 col1, col2 = st.columns(2)
 
 with col1:
-    st.metric(label="Heutige Chatnachrichten", value=str(today_messages), delta=str(round((today_messages-yesterday_messages)/yesterday_messages*100,2)) + "%", help="This metric shows the difference and percentage change in the number of messages sent today compared to yesterday.", delta_color="off")
+    if yesterday_messages > 0:
+        delta_yesterday_today = (today_messages-yesterday_messages)/yesterday_messages*100
+    else:
+        delta_yesterday_today = 0
+    st.metric(label="Heutige Chatnachrichten", value=str(today_messages), delta=str(round(delta_yesterday_today,2)) + "%", help="This metric shows the difference and percentage change in the number of messages sent today compared to yesterday.", delta_color="off")
 
 with col2:
     st.metric(label="Insgesamte Anzahl an Chatnachrichten", value=str(len(df)))
