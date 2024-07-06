@@ -1,0 +1,3 @@
+* Werkstücke kommen per Rollenbahn angefahren und halten vor der Maschine
+* Über das Tablet müssen die Auftragsdaten überprüft werden die auch auf dem Werkstückträger angezeigt werden
+* Wenn diese nicht übereinstimmen müssen diese angepasst werden

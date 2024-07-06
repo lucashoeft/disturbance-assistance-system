@@ -1,0 +1,95 @@
+Fehlerbeschreibung: Unzureichende Beschichtungsdicke
+Fehler-Code: E101
+Ursache: Falsche Parameter eingestellt
+Lösungsschritte:
+
+1. Überprüfen Sie die eingestellten Beschichtungsparameter.
+2. Passen Sie die Einstellungen entsprechend den Vorgaben an.
+3. Führen Sie einen Testlauf durch, um die Korrektur zu bestätigen.
+
+
+Fehlerbeschreibung: Niedriger Kühlmittelstand
+Fehlercode: E102
+Ursache: Kühlmittel nicht ausreichend nachgefüllt
+Lösungsschritte:
+
+1. Füllen Sie die Kühlflüssigkeit bis zum vorgeschriebenen Stand nach.
+2. Überprüfen Sie das Kühlsystem auf Undichtigkeiten oder Verstopfungen.
+
+
+Fehlerbeschreibung: Überdruck im Beschichtungssystem
+Fehlercode: E103
+Ursache: Verstopfung im Drucksystem
+Lösungsschritte:
+
+1. Halten Sie die Maschine sofort an.
+2. Überprüfen und reinigen Sie die Druckleitungen und Filter.
+3. Setzen Sie die Maschine zurück und starten Sie den Prozess erneut.
+
+
+Fehlerbeschreibung: Temperatur zu hoch
+Fehlercode: E104
+Ursache: Fehler im Kühlsystem oder unzureichende Kühlung
+Lösungsschritte:
+
+1. Prüfen Sie das Kühlsystem auf einwandfreie Funktion.
+2. Stellen Sie sicher, dass der Kühlmittelstand ausreichend ist.
+3. Starten Sie die Maschine neu, nachdem sie abgekühlt ist.
+
+
+Fehlerbeschreibung: Beschichtungsmaterial leer
+Fehlercode: E105
+Ursache: Beschichtungsmaterial nicht rechtzeitig nachgefüllt
+Lösungsschritte:
+
+1. Füllen Sie das Beschichtungsmaterial gemäß den Anweisungen nach.
+2. Prüfen Sie den Füllstand regelmäßig, um zukünftige Ausfälle zu vermeiden.
+
+
+Fehlerbeschreibung: Stromausfall
+Fehlercode: E106
+Ursache: Unterbrechung der Stromzufuhr
+Lösungsschritte:
+
+1. Überprüfen Sie die Stromversorgung und die Sicherungen.
+2. Setzen Sie das Gerät nach Wiederherstellung der Stromversorgung zurück.
+
+
+Fehlerbeschreibung: Sensor-Fehler
+Fehlercode: E107
+Ursache: Defekter oder verschmutzter Sensor
+Schritte zur Lösung:
+
+1. Reinigen Sie den betroffenen Sensor.
+2. Ersetzen Sie den Sensor, falls erforderlich.
+3. Testen Sie die Funktion des Sensors durch einen Testlauf.
+
+
+Fehlerbeschreibung: Ungleichmäßige Beschichtung
+Fehlercode: E108
+Ursache: Falsche Einstellung der Beschichtungsparameter oder Maschinenkalibrierung
+Lösungsschritte:
+
+1. Kalibrieren Sie die Maschine neu.
+2. Stellen Sie sicher, dass die Beschichtungsparameter korrekt eingestellt sind.
+3. Führen Sie einen Testlauf durch, um die Korrektur zu bestätigen.
+
+
+Fehlerbeschreibung: Vakuumverlust
+Fehlercode: E109
+Ursache: Leck im Vakuumsystem
+Lösungsschritte:
+
+1. Prüfen Sie das Vakuumsystem auf Undichtigkeiten und dichten Sie es ab.
+2. Stellen Sie sicher, dass alle Dichtungen intakt sind.
+3. Starten Sie den Beschichtungsprozess erneut, nachdem Sie das Problem behoben haben.
+
+
+Fehlerbeschreibung: Unbekannter Fehler
+Fehlercode: E110
+Ursache: Systemfehler oder Softwareproblem
+Schritte zur Lösung:
+
+1. Starten Sie das Gerät neu.
+2. Überprüfen Sie das System auf Software-Updates oder Fehler.
+3. Wenden Sie sich an den technischen Support, wenn der Fehler weiterhin besteht.
