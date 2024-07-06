@@ -1,5 +1,8 @@
+import os
 import gradio as gr
 import random
+
+os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 
 def alternatingly_agree(message, history):
     if len(history) % 2 == 0:
