@@ -1,1 +1,15 @@
 chainlit
+python-dotenv
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-postgres
+langgraph
+openai
+psycopg
+psycopg2-binary
+psycopg-binary
+psycopg[binary,pool]
+langfuse
+paho-mqtt
