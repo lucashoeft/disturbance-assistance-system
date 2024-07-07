@@ -1,0 +1,108 @@
+Störungen bei der Beschichtung
+
+Für eine erfolgreiche Störungsbehebung ist es notwendig, sorgfältig und systematisch vorzugehen. Die Sicherheitshinweise sind zu befolgen.
+
+
+Störung-ID: 1
+Störung-Name: Fehlerhafte Auftragsdaten
+Zusammenfassung: Bei der Beschichtungsmaschine bricht die Beschichtung ab, weil die Auftragsdaten in einem vorigen Arbeitsschritt falsch in die Auftragsliste übertragen worden sind.
+Betroffene Komponenten: Beschichtungsmaschine, Auftragsliste
+Ursache: Die Auftragsdaten wurden falsch übertragen, wodurch es zu einem Fehler der Maschine kommt. 
+Lösungsschritte: Die Bearbeitungsparameter müssen angepasst werden. Wichtig ist es den Beschichtungstyp und die Tönung beizubehalten. Es muss die Beschichtungsdicke angepasst werden, denn die Tönung ist nur von einer bestimmten Beschichtungsdicke möglich. Wenn die Beschichtungsdicke angepasst wurde, kann die Beschichtung wieder gestartet werden.
+
+
+
+Störung-ID: 2
+Störung-Name: Fehlendes Kühlmittel
+Zusammenfassung: Bei der Beschichtungsmaschine bricht die Beschichtung ab, weil nicht mehr genügend Kühlmittel vorhanden ist. Die Druckanzeige bewegt sich dabei im roten Bereich.
+Betroffene Komponenten: Beschichtungsmaschine, Kühlmittel
+Ursache: Nicht genügend Kühlmittel
+Lösungsschritte: Es muss über den Button „Kühlmittel nachfüllen“ das fehlende Kühlmittel nachgefüllt werden. Das Kühlmittel wird dafür von der Maschine nachgefüllt.
+
+
+
+Störung-ID: 3
+Störung-Name: Unterschiedliche Auftragsdaten
+Zusammenfassung: Die Auftragsdaten aus der Auftragsliste auf dem Tablet stimmen nicht mit den Auftragsdaten auf dem Werkstückträger überein.
+Betroffene Komponenten: Auftragsliste, Tablet, Werkstückträger
+Ursache: Die Auftragsdaten in der Auftragsliste sind nicht korrekt.
+Lösungsschritte: Die Auftragsdaten in der Auftragsliste auf dem Tablet müssen angepasst werden, dass sie identisch zu den Auftragsdaten auf dem Werkstückträger sind.
+
+
+
+Störung-ID: 4
+Störung-Name: Ausgeschaltete Beschichtungsmaschine
+Zusammenfassung: Die Beschichtungsmaschine ist ausgeschaltet, die Bildschirme an den Seiten und der Touchscreen auf der Oberseite sind aus.
+Betroffene Komponenten: Beschichtungsmaschine
+Ursache: Eine Unterbrechung in der Stromversorgung oder Beschichtungsmaschine wurde noch nicht durch den Schichtleiter angeschaltet und konfiguriert.
+Lösungsschritte: Kontaktieren Sie den Schichtleiter, der die notwendigen Arbeitsschritte zum Anschalten der Beschichtungsmaschine durchführen wird.
+
+
+
+Störung-ID: 5
+Störung-Name: Ausgeschaltetes Tablet
+Zusammenfassung: Das Tablet für die Auftragsliste ist ausgeschaltet, der Bildschirm ist aus.
+Betroffene Komponenten: Tablet
+Ursache: Ein leerer Akku des Tablets, die Aktivierung des Ruhemodus oder das Tablet wurde noch nicht durch den Schichtleiter angeschaltet und konfiguriert.
+Lösungsschritte: Kontaktieren Sie den Schichtleiter, der die notwendigen Arbeitsschritte zum Anschalten des Tablets durchführen wird.
+
+Störung-ID: 6
+Störung-Name: Ausgeschaltete Rollenbahn
+Zusammenfassung: Die Rollenbahn sind ausgeschaltet und die Werkstückträger werden nicht transportiert
+Betroffene Komponenten: Rollenbahn
+Ursache: Rollenbahn wurde noch nicht angeschaltet und konfiguriert
+Lösungsschritte: Kontaktieren Sie den Schichtleiter, der die notwendigen Arbeitsschritte zum Anschalten der Rollenbahn durchführen wird.
+
+
+
+Störung-ID: 7
+Störung-Name: Fehlerhaftes Einmessen der Bearbeitungsparameter
+Zusammenfassung: Durch die Funktion zum Einmessen bei der Beschichtungsmaschine wurden die falschen Bearbeitungsparameter eingestellt.
+Betroffene Komponenten: Beschichtungsmaschine
+Ursache: Fehlerhafte Sensoren
+Lösungsschritte: Die Bearbeitungsparameter müssen manuell abgeglichen und bei der Maschine angepasst werden, damit sie übereinstimmen.
+
+
+
+Störung-ID: 8
+Störung-Name: Fehlerhaft beschichtete Linsen
+Zusammenfassung: Nachdem die Beschichtung der Linsen erfolgt ist, wurden bei der Sichtkontrolle des Werkstückträgers fehlerhaft beschichtete Linsen festgestellt.
+Betroffene Komponenten: Werkstückträger
+Ursache: Die optischen Linsen hatten bereits Qualitätsmängel, wodurch es zu einer Beschädigung durch die Beschichtungsmaschine kam.
+Lösungsschritte: Über Tablet in Auftragsliste die Anzahl der einwandfreien und fehlerhaften Linsen auswählen und den Auftrag abschließen.
+
+
+
+Störung-ID: 9
+Störung-Name: Stromausfall
+Zusammenfassung: Unterbrechung der Stromzufuhr der Anlage.
+Betroffene Komponenten: Tablet, Beschichtungsmaschine, Rollenbahn, Lager
+Ursache: Unterbrechung der Stromzufuhr
+Lösungsschritte: Kontaktieren Sie den Schichtleiter, der die notwendigen Arbeitsschritte zum Anschalten der Rollenbahn durchführen wird.
+
+
+
+Störung-ID: 10
+Störung-Name: Wiederholende Aufträge
+Zusammenfassung: In der Auftragsliste erscheint nach Abarbeitung des Auftrages der identische Auftrag wieder.
+Betroffene Komponenten: Auftragsliste
+Ursache: Der Auftrag zur Beschichtung optischer Linsen war größer als die verfügbare Fläche des Werkstückträgers, weshalb der gleiche Auftrag mehrmals erstellt wurde. 
+Lösungsschritte: Der Fehler kann ignoriert werden.
+
+
+
+Störung-ID: 11
+Störung-Name: Erhöhter Druck und erhöhte Temperatur 
+Zusammenfassung: Die Anzeigen für Druck und Temperatur befinden sich beide im roten Bereich.
+Betroffene Komponenten: Beschichtungsmaschine
+Ursache: Zu hohe Auslastung, wodurch Kühlung und Druckabsenkung nicht stattfinden kann.
+Lösungsschritte: Auslastung verringern
+
+
+
+Störung-ID: 12
+Störung-Name: Bearbeitung der Werkstücke startet nicht
+Zusammenfassung: Trotz Button-Klick Bearbeitung starten, startet die Bearbeitung nicht.
+Betroffene Komponenten: Beschichtungsmaschine
+Ursache: Software-Bug
+Lösungsschritte: Wenn trotz mehrmaligen Drückens des Buttons die Bearbeitung nicht startet, ist es notwendig den Schichtleiter (Versuchsleiter) zu kontaktieren, der die Maschine wartet.

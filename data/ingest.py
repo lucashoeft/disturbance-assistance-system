@@ -1,4 +1,4 @@
-from langchain_text_splitters import CharacterTextSplitter
+from langchain.text_splitter import CharacterTextSplitter
 import os
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
@@ -27,7 +27,7 @@ text_splitter = CharacterTextSplitter(
     length_function=len
 )
 
-loader = TextLoader("disturbances_coating.txt")
+loader = TextLoader("störungen_beschichtung.txt")
 
 for doc in loader.load():
 
