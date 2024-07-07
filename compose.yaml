@@ -40,6 +40,17 @@ services:
         - action: sync
           path: ./chainlit
           target: /chainlit
+  streamlit:
+    build: ./streamlit
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    develop:
+      watch:
+        - action: sync
+          path: ./streamlit
+          target: /streamlit
   backend:
     build: ./backend
     ports:
