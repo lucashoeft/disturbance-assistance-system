@@ -2,16 +2,31 @@
 
 ### Requirements
 
-For using the OpenAI-API add the `.env`-file to the root directory containing:
+For using the OpenAI-API add the `.env`-file to the root directory (or just rename `.env.example` to `.env`) containing:
 
 ```
-OPENAI_API_KEY=""
+OPENAI_API_KEY="sk.."
+LANGFUSE_PUBLIC_KEY="pk.."
+LANGFUSE_SECRET_KEY="sk.."
 ```
 
-When working with langfuse, it is also neccessary to add `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` to the `.env`-file. These keys can be obtained after setting up the project in langfuse (localhost:3000).
+When working with langfuse, it is also neccessary to add `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` to the `.env`-file. These keys can be obtained after setting up the project in langfuse (<localhost:3000>).
+
+To get the vector database properly working, you need to add documents. You can add the documents in `/data` or create your own documents. You can add documents to the database with `ingest.py` in the data folder.
 
 ### Working with Docker
 
 To start the containers run `docker compose up`. To incorporate changes automatically start the containers with `docker compose watch` or `docker compose up -watch`.
 
+Access the 
+
 To stop the containers run `docker compose down`.
+
+To rebuild the containers run `docker compose build --no-cache`.
+
+## Stack
+
+* Docker
+* Postgres (with PGVector)
+* Chainlit
+* Langfuse
