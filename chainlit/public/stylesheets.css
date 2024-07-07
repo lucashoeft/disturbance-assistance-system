@@ -8,3 +8,12 @@
     visibility: collapse !important;
 }
 
+/* logo on top left position*/
+img[alt="logo"] {
+    visibility: collapse !important;
+}
+
+/* div of the logo in side bar*/
+.css-14k6mw7 {
+    visibility: collapse !important;
+}
