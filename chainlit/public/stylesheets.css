@@ -1,4 +1,10 @@
 .watermark {
-    display: none !important;
-    /* visibility: hidden !important; */
+    visibility: collapse !important;
+
 }
+
+/* class-tag for copy-to-clipboard button */
+.css-16i44ew {
+    visibility: collapse !important;
+}
+
