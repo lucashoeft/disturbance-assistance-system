@@ -13,3 +13,4 @@ psycopg-binary
 psycopg[binary,pool]
 langfuse
 paho-mqtt
+sqlalchemy[asyncio]
