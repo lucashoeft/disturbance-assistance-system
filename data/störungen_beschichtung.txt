@@ -96,7 +96,7 @@ Störung-Name: Erhöhter Druck und erhöhte Temperatur
 Zusammenfassung: Die Anzeigen für Druck und Temperatur befinden sich beide im roten Bereich.
 Betroffene Komponenten: Beschichtungsmaschine
 Ursache: Zu hohe Auslastung, wodurch Kühlung und Druckabsenkung nicht stattfinden kann.
-Lösungsschritte: Auslastung verringern
+Lösungsschritte: Auslastung verringern oder Kühlmittel nachfüllen.
 
 
 
