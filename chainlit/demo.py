@@ -20,8 +20,6 @@ from langfuse.callback import CallbackHandler
 from langfuse import Langfuse
 from langchain.schema.runnable.config import RunnableConfig
 
-# cb = cl.AsyncLangchainCallbackHandler(stream_final_answer=True)
-
 dotenv.load_dotenv()
 
 # print(os.getenv('LITERAL_API_KEY'))
@@ -57,9 +55,10 @@ async def main(message: cl.Message):
     conversational_rag_chain = cl.user_session.get("conversational_rag_chain")
     langfuse_handler = cl.user_session.get("langfuse_handler")
     
-    # use cl.LangchainCallbackHandler() for debugging
-    config = {"configurable": {"session_id": user_sesion_id, "message_id": message.id}, "callbacks":[langfuse_handler]}
+    # use cl.LangchainCallbackHandler() in callbacks for debugging
+    config=RunnableConfig(callbacks=[langfuse_handler], configurable={"session_id": user_sesion_id, "message_id": message.id})
     
+    """
     response = conversational_rag_chain.invoke(
         {"input": message.content},
         config=config
@@ -67,32 +66,20 @@ async def main(message: cl.Message):
     
     await cl.Message(response['answer']).send()
     """
-    msg = cl.Message(content="")
-
-    async for chunk in conversational_rag_chain.astream(
-        {"input": message.content},
-        config=RunnableConfig(callbacks=[cl.LangchainCallbackHandler()], configurable={"session_id": user_sesion_id, "message_id": message.id}),
-    ):
-        await msg.stream_token(chunk)
-
-    await msg.send()
-    """
 
     ### below works but does not incorporate message history
 
-    """
     msg = cl.Message(content="")
 
     for chunk in await cl.make_async(conversational_rag_chain.stream)(
         {"input": message.content},
-        config=RunnableConfig(callbacks=[cl.LangchainCallbackHandler(), langfuse_handler], configurable={"session_id": user_sesion_id, "message_id": message.id}),
+        config=config,
     ):
         if "answer" in chunk:
             await msg.stream_token(chunk['answer'])
 
     await msg.send()
-    """
-        
+
 @cl.on_settings_update
 async def setup_agent(settings):
     print("on_settings_update", settings)
