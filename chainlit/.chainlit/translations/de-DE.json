@@ -14,7 +14,7 @@
         },
         "molecules": {
             "newChatButton": {
-                "newChat": "Neuer Dings Chat"
+                "newChat": "Neuer Chat"
             },
             "tasklist": {
                 "TaskList": {
@@ -28,16 +28,16 @@
                 "removeAttachment": "Remove attachment"
             },
             "newChatDialog": {
-                "createNewChat": "Create new chat?",
-                "clearChat": "This will clear the current messages and start a new chat.",
-                "cancel": "Cancel",
-                "confirm": "Confirm"
+                "createNewChat": "Neuen Chat erstellen?",
+                "clearChat": "Erstelle einen neuen Chat, wenn eine neue \n Störung, Fehler oder Frage aufgetreten ist.",
+                "cancel": "Abbrechen",
+                "confirm": "Bestätigen"
             },
             "settingsModal": {
-                "settings": "Settings",
+                "settings": "Einstellungen",
                 "expandMessages": "Expand Messages",
                 "hideChainOfThought": "Hide Chain of Thought",
-                "darkMode": "Dark Mode"
+                "darkMode": "Dunkler Modus"
             },
             "detailsButton": {
                 "using": "Using",
@@ -127,8 +127,8 @@
                         "stop": "Stop recording"
                     },
                     "SubmitButton": {
-                        "sendMessage": "Send message",
-                        "stopTask": "Stop Task"
+                        "sendMessage": "Sende Nachricht",
+                        "stopTask": "Beende Aufgabe"
                     },
                     "UploadButton": {
                         "attachFiles": "Attach files"

@@ -1,6 +1,5 @@
 .watermark {
     visibility: collapse !important;
-
 }
 
 /* class-tag for copy-to-clipboard button */
@@ -15,5 +14,9 @@ img[alt="logo"] {
 
 /* div of the logo in side bar*/
 .css-14k6mw7 {
+    visibility: collapse !important;
+}
+
+#open-sidebar-button {
     visibility: collapse !important;
 }
