@@ -31,12 +31,6 @@ LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
 
 class CustomDataLayer(cl_data.BaseDataLayer):
     
-    # async def get_user(self, identifier: str):
-    #     return cl.PersistedUser(id="test", createdAt=now, identifier=identifier)
-
-    # async def create_user(self, user: cl.User):
-    #     return cl.PersistedUser(id="test", createdAt=now, identifier=user.identifier)
-
     async def upsert_feedback(self, feedback: cl_data.Feedback) -> str:
         print(self, feedback) 
 
@@ -56,23 +50,14 @@ class CustomDataLayer(cl_data.BaseDataLayer):
             comment=feedback.comment
         )
 
-# @cl.cache
-# def getChain():
-#    return "chain"
-
 @cl.on_message
 async def main(message: cl.Message):
 
     user_sesion_id = cl.user_session.get("session_id")
     conversational_rag_chain = cl.user_session.get("conversational_rag_chain")
-
-    langfuse_handler = CallbackHandler(
-        public_key=LANGFUSE_PUBLIC_KEY,
-        secret_key=LANGFUSE_SECRET_KEY,
-        host="http://host.docker.internal:3000",
-        session_id=user_sesion_id
-    )  
-
+    langfuse_handler = cl.user_session.get("langfuse_handler")
+    
+    # use cl.LangchainCallbackHandler() for debugging
     config = {"configurable": {"session_id": user_sesion_id, "message_id": message.id}, "callbacks":[langfuse_handler]}
     
     response = conversational_rag_chain.invoke(
@@ -80,20 +65,33 @@ async def main(message: cl.Message):
         config=config
     )
     
-    answer = response['answer']
-    
-    await cl.Message(answer).send()
+    await cl.Message(response['answer']).send()
+    """
+    msg = cl.Message(content="")
 
-    # msg = cl.Message(content="")
+    async for chunk in conversational_rag_chain.astream(
+        {"input": message.content},
+        config=RunnableConfig(callbacks=[cl.LangchainCallbackHandler()], configurable={"session_id": user_sesion_id, "message_id": message.id}),
+    ):
+        await msg.stream_token(chunk)
 
-    # async for chunk in conversational_rag_chain.astream(
-    #     {"question": message.content},
-    #     config=RunnableConfig(callbacks=[cl.LangchainCallbackHandler()], configurable={"session_id": user_sesion_id, "message_id": message.id}),
-    # ):
-    #     await msg.stream_token(chunk)
+    await msg.send()
+    """
 
-    # await msg.send()
+    ### below works but does not incorporate message history
 
+    """
+    msg = cl.Message(content="")
+
+    for chunk in await cl.make_async(conversational_rag_chain.stream)(
+        {"input": message.content},
+        config=RunnableConfig(callbacks=[cl.LangchainCallbackHandler(), langfuse_handler], configurable={"session_id": user_sesion_id, "message_id": message.id}),
+    ):
+        if "answer" in chunk:
+            await msg.stream_token(chunk['answer'])
+
+    await msg.send()
+    """
         
 @cl.on_settings_update
 async def setup_agent(settings):
@@ -160,8 +158,6 @@ async def on_chat_start():
         "{context}"
     )
 
-    # Use three sentences maximum and keep the "answer concise.
-
     qa_prompt = ChatPromptTemplate.from_messages(
         [
             ("system", system_prompt),
@@ -175,12 +171,15 @@ async def on_chat_start():
     rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
 
     conn_info = "postgresql://admin:admin@postgres:5432/chat_history"
+    # sync_connection = await psycopg.AsyncConnection.connect(conn_info)
+    # connect(conn_info)
     sync_connection = psycopg.connect(conn_info)
     table_name ="chat_history"
 
     history = PostgresChatMessageHistory(
         table_name,
         user_sesion_id,
+        # async_connection=sync_connection,
         sync_connection=sync_connection,
     )
 
@@ -194,6 +193,14 @@ async def on_chat_start():
 
     cl.user_session.set("conversational_rag_chain", conversational_rag_chain)
 
+    langfuse_handler = CallbackHandler(
+        public_key=LANGFUSE_PUBLIC_KEY,
+        secret_key=LANGFUSE_SECRET_KEY,
+        host="http://host.docker.internal:3000",
+        session_id=user_sesion_id
+    )
+
+    cl.user_session.set("langfuse_handler", langfuse_handler)
 
 cl_data._data_layer=CustomDataLayer()
 
