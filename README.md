@@ -26,7 +26,9 @@ To rebuild the containers run `docker compose build --no-cache`.
 
 ## Stack
 
-* Docker
-* Postgres (with PGVector)
-* Chainlit
-* Langfuse
+* Docker (with Docker Engine 27.0)
+* Postgres 16 (with PGVector 0.7)
+* Python 3.9 (Slim)
+* Chainlit 1.1
+* Langchain 0.2
+* Langfuse 2

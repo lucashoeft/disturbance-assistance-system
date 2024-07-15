@@ -58,17 +58,6 @@ async def main(message: cl.Message):
     # use cl.LangchainCallbackHandler() in callbacks for debugging
     config=RunnableConfig(callbacks=[langfuse_handler], configurable={"session_id": user_sesion_id, "message_id": message.id})
     
-    """
-    response = conversational_rag_chain.invoke(
-        {"input": message.content},
-        config=config
-    )
-    
-    await cl.Message(response['answer']).send()
-    """
-
-    ### below works but does not incorporate message history
-
     msg = cl.Message(content="")
 
     for chunk in await cl.make_async(conversational_rag_chain.stream)(
@@ -158,16 +147,13 @@ async def on_chat_start():
     rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
 
     conn_info = "postgresql://admin:admin@postgres:5432/chat_history"
-    # sync_connection = await psycopg.AsyncConnection.connect(conn_info)
-    # connect(conn_info)
     sync_connection = psycopg.connect(conn_info)
     table_name ="chat_history"
 
     history = PostgresChatMessageHistory(
         table_name,
         user_sesion_id,
-        # async_connection=sync_connection,
-        sync_connection=sync_connection,
+        sync_connection=sync_connection
     )
 
     conversational_rag_chain = RunnableWithMessageHistory(
@@ -175,7 +161,7 @@ async def on_chat_start():
         lambda session_id: history,
         input_messages_key="input",
         history_messages_key="chat_history",
-        output_messages_key="answer",
+        output_messages_key="answer"
     )
 
     cl.user_session.set("conversational_rag_chain", conversational_rag_chain)

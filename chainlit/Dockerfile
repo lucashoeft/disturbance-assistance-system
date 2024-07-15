@@ -19,6 +19,6 @@ RUN pip3 install -r requirements.txt
 
 EXPOSE 8000
 
-# HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+# HEALTHCHECK CMD curl --fail -I http://localhost:8000/
 
 ENTRYPOINT ["chainlit", "run", "demo.py", "-w"]
