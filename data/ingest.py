@@ -14,7 +14,7 @@ OPEN_API_KEY = os.getenv('OPEN_AI_API_KEY')
 connection = "postgresql+psycopg://admin:admin@localhost:5433/vectordb"  # Uses psycopg3!
 
 vectorstore = PGVector(
-    embeddings=OpenAIEmbeddings(),
+    embeddings=OpenAIEmbeddings(model="text-embedding-3-large"),
     collection_name="my_docs",
     connection=connection,
     use_jsonb=True,

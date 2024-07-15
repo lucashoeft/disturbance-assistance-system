@@ -3,21 +3,22 @@ Störungen bei der Beschichtung
 Für eine erfolgreiche Störungsbehebung ist es notwendig, sorgfältig und systematisch vorzugehen. Die Sicherheitshinweise sind zu befolgen.
 
 
-Störung-ID: 1
+
+Störung-ID: 11
 Störung-Name: Fehlerhafte Auftragsdaten
 Zusammenfassung: Bei der Beschichtungsmaschine bricht die Beschichtung ab, weil die Auftragsdaten in einem vorigen Arbeitsschritt falsch in die Auftragsliste übertragen worden sind.
 Betroffene Komponenten: Beschichtungsmaschine, Auftragsliste
 Ursache: Die Auftragsdaten wurden falsch übertragen, wodurch es zu einem Fehler der Maschine kommt. 
-Lösungsschritte: Die Bearbeitungsparameter müssen angepasst werden. Wichtig ist es den Beschichtungstyp und die Tönung beizubehalten. Es muss die Beschichtungsdicke angepasst werden, denn die Tönung ist nur von einer bestimmten Beschichtungsdicke möglich. Wenn die Beschichtungsdicke angepasst wurde, kann die Beschichtung wieder gestartet werden.
+Lösungsschritte: Die Bearbeitungsparameter müssen angepasst werden. Wichtig ist es den Beschichtungstyp und die Tönung beizubehalten. Es muss die Beschichtungsdicke angepasst werden, denn die Tönung ist eine Mindestbeschichtungsdicke notwendig. Wenn die Beschichtungsdicke angepasst wurde, kann die Beschichtung wieder gestartet werden. Für die niedrigste Tönung (15%) sind alle Beschichtungsdicken (100 μm (Mikrometer), 100 μm, 150 μm, 180μm , 210μm) möglich. Für die stärkste Tönung (40%) kann nur die höchste Beschichtungsdicke (210μm) ausgewählt werden.
 
 
 
-Störung-ID: 2
+Störung-ID: 21
 Störung-Name: Fehlendes Kühlmittel
-Zusammenfassung: Bei der Beschichtungsmaschine bricht die Beschichtung ab, weil nicht mehr genügend Kühlmittel vorhanden ist. Die Druckanzeige bewegt sich dabei im roten Bereich.
+Zusammenfassung: Bei der Beschichtungsmaschine bricht die Beschichtung ab, weil nicht mehr genügend Kühlmittel vorhanden ist. Die Temperaturanzeige bewegt sich dabei im roten Bereich.
 Betroffene Komponenten: Beschichtungsmaschine, Kühlmittel
 Ursache: Nicht genügend Kühlmittel
-Lösungsschritte: Es muss über den Button „Kühlmittel nachfüllen“ das fehlende Kühlmittel nachgefüllt werden. Das Kühlmittel wird dafür von der Maschine nachgefüllt.
+Lösungsschritte: Es muss über den Button „Kühlmittel nachfüllen“ das fehlende Kühlmittel nachgefüllt werden. Das Kühlmittel wird dafür von der Maschine nachgefüllt. Danach kann Beschichtung wieder gestartet werden.
 
 
 
@@ -45,6 +46,8 @@ Zusammenfassung: Das Tablet für die Auftragsliste ist ausgeschaltet, der Bildsc
 Betroffene Komponenten: Tablet
 Ursache: Ein leerer Akku des Tablets, die Aktivierung des Ruhemodus oder das Tablet wurde noch nicht durch den Schichtleiter angeschaltet und konfiguriert.
 Lösungsschritte: Kontaktieren Sie den Schichtleiter, der die notwendigen Arbeitsschritte zum Anschalten des Tablets durchführen wird.
+
+
 
 Störung-ID: 6
 Störung-Name: Ausgeschaltete Rollenbahn
@@ -91,12 +94,12 @@ Lösungsschritte: Der Fehler kann ignoriert werden.
 
 
 
-Störung-ID: 11
-Störung-Name: Erhöhter Druck und erhöhte Temperatur 
-Zusammenfassung: Die Anzeigen für Druck und Temperatur befinden sich beide im roten Bereich.
+Störung-ID: 1
+Störung-Name: Erhöhter Druck 
+Zusammenfassung: Die Anzeige für Druck befinden sich beide im roten Bereich.
 Betroffene Komponenten: Beschichtungsmaschine
 Ursache: Zu hohe Auslastung, wodurch Kühlung und Druckabsenkung nicht stattfinden kann.
-Lösungsschritte: Auslastung verringern oder Kühlmittel nachfüllen.
+Lösungsschritte: Auslastung verringern durch Pausenzeiten zwischen Beschichtungsdurchgängen. Zweite Möglichkeit ist Kühlmittel nachfüllen. In jedem Fall Beschichtung wieder starten.
 
 
 
@@ -106,3 +109,11 @@ Zusammenfassung: Trotz Button-Klick Bearbeitung starten, startet die Bearbeitung
 Betroffene Komponenten: Beschichtungsmaschine
 Ursache: Software-Bug
 Lösungsschritte: Wenn trotz mehrmaligen Drückens des Buttons die Bearbeitung nicht startet, ist es notwendig den Schichtleiter (Versuchsleiter) zu kontaktieren, der die Maschine wartet.
+
+
+
+Störung-ID: Unbekannt
+Störung-Name: Unbekannte Störung
+Zusammenfassung: Eine unbekannte Störung ohne Störungs-ID ist aufgetreten.
+Ursache: Unbekannt
+Lösungsschritte: Unbekannte Störungen lassen sich meist auf bekannte Störungen zurückführen. Inspiziere den Touchscreen der Beschichtungsmaschine und das Tablet mit den Auftragsdaten. Wenn sich der Werkstückträger außerhalb der Maschine befindet, inspiziere auch diesen.
