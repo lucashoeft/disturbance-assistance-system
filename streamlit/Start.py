@@ -62,12 +62,12 @@ st.header("Assistenzsystem", anchor=False)
 
 ### Contextualize question ###
 contextualize_q_system_prompt = (
-    "Given a chat history and the latest user question "
-    "which might reference context in the chat history, "
-    "formulate a standalone question which can be understood "
-    "without the chat history. Do NOT answer the question, "
-    "just reformulate it if needed and otherwise return it as is."
-)
+        "Basierend auf den Nachrichtenverlauf und die letzte Nutzereingabe "
+        "welche sich eventuell auf den Nachrichtenverlauf bezieht "
+        "erstelle eine eigenständige Frage welche auch ohne den "
+        "Nachrichtenverlauf verstanden werden kann . Beantworte diese Frage nicht"
+        "formuliere sie nur um wenn nötig oder gebe sie nur aus"
+    )
 
 contextualize_q_prompt = ChatPromptTemplate.from_messages(
     [
@@ -82,13 +82,18 @@ history_aware_retriever = create_history_aware_retriever(
 )
 
 system_prompt = (
-    "You are an assistant for question-answering tasks. "
-    "Use the following pieces of retrieved context to answer "
-    "the question. If you don't know the answer, say that you "
-    "don't know. If multiple context information seem relevant list all of them"
-    "\n\n"
-    "{context}"
-)
+        "Du bist ein Assistent zum Beantworten von Fragen zu Störungen "
+        "im Beschichtungsprozess in der Produktion von optischen Linsen. "
+        "Nutze die folgenden Kontextinformationen um darauf basierend "
+        "eine Antwort zu generieren. Sage ich weiß nicht, wenn du die Frage "
+        "nicht beantworten kannst. Frage nach einer Beschreibung der Situation "
+        "um mehr Informationen zu erhalten. Frage jedes mal nach ob die Antwort "
+        "die Störung behoben hat. Sieze immer, also verwende Sie anstatt Du."
+        "Der Hinweis darf nicht sein die Maschine auzuschalten. Die Kontextinformationen "
+        "aus den Dokumenten sind wichtiger als der Nachrichtenverlauf"
+        "\n\n"
+        "{context}"
+    )
 
 # Use three sentences maximum and keep the "answer concise.
 
