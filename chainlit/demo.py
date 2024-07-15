@@ -19,6 +19,7 @@ from langchain_postgres.chat_message_histories import PostgresChatMessageHistory
 from langfuse.callback import CallbackHandler
 from langfuse import Langfuse
 from langchain.schema.runnable.config import RunnableConfig
+import time
 
 dotenv.load_dotenv()
 
@@ -75,9 +76,18 @@ async def setup_agent(settings):
 
 @cl.on_chat_start
 async def on_chat_start():
-    await cl.Message(
-        content=f"Hallo Werker bzw. Werkerin, ich unterstützte Sie bei Ihrer Tätigkeit in der Produktion. \n Ich verfüge über Informationen darüber, wie man Störungen beheben kann. Wie kann ich Ihnen weiterhelfen?", disable_feedback=True
-    ).send()
+
+    # split with https://platform.openai.com/tokenizer
+    # message = "Hallo Werker bzw. Werkerin, ich unterstützte Sie bei Ihrer Tätigkeit in der Produktion.\n Ich verfüge über Informationen darüber, wie man Störungen beheben kann. Wie kann ich Ihnen weiterhelfen?"
+    message_chunks = ["Hallo", " Werker", " bzw", ".", " Wer", "ker", "in", ",", " ich", " unterst", "ützte", " Sie", " bei", " Ihrer", " T", "ät", "igkeit", " in", " der", " Produ", "ktion", ".", "\n", "Ich", " ver", "fü", "ge", " über", " Informationen", " darüber", ",", " wie", " man", " St", "ör", "ungen", " be", "he", "ben", " kann", ".", " Wie", " kann", " ich", " Ihnen", " weiter", "h", "elf", "en", "?"]
+    
+    msg = cl.Message(content="")
+
+    for chunk in message_chunks:
+        time.sleep(0.01)
+        await msg.stream_token(chunk)
+
+    await msg.send()
 
     rnd = random.Random()
     random_uuid = uuid.UUID(int=rnd.getrandbits(128), version=4)
@@ -126,10 +136,9 @@ async def on_chat_start():
         "Nutze die folgenden Kontextinformationen um darauf basierend "
         "eine Antwort zu generieren. Sage ich weiß nicht, wenn du die Frage "
         "nicht beantworten kannst. Frage nach einer Beschreibung der Situation "
-        "um mehr Informationen zu erhalten. Frage jedes mal nach ob die Antwort "
-        "die Störung behoben hat. Sieze immer, also verwende Sie anstatt Du."
-        "Der Hinweis darf nicht sein die Maschine auzuschalten. Die Kontextinformationen "
-        "aus den Dokumenten sind wichtiger als der Nachrichtenverlauf"
+        "um mehr Informationen zu erhalten und ob die Informationen geholfen haben."
+        "Sieze immer, also verwende Sie anstatt Du. Der Hinweis darf nicht sein die Maschine auzuschalten."
+        "Die Kontextinformationen aus den Dokumenten sind wichtiger als der Nachrichtenverlauf"
         "\n\n"
         "{context}"
     )
