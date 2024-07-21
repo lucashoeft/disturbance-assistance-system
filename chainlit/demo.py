@@ -4,8 +4,8 @@ import uuid
 import psycopg
 import random
 import chainlit as cl
-from chainlit.types import ThreadDict
 import chainlit.data as cl_data
+from chainlit.types import ThreadDict
 from langchain.prompts import ChatPromptTemplate
 from langfuse.callback import CallbackHandler
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
@@ -23,7 +23,6 @@ import time
 
 dotenv.load_dotenv()
 
-# print(os.getenv('LITERAL_API_KEY'))
 OPEN_API_KEY = os.getenv('OPEN_AI_API_KEY')
 LANGFUSE_PUBLIC_KEY = os.getenv('LANGFUSE_PUBLIC_KEY')
 LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
@@ -112,7 +111,7 @@ async def on_chat_start():
         "Basierend auf den Nachrichtenverlauf und die letzte Nutzereingabe "
         "welche sich eventuell auf den Nachrichtenverlauf bezieht "
         "erstelle eine eigenständige Frage welche auch ohne den "
-        "Nachrichtenverlauf verstanden werden kann . Beantworte diese Frage nicht"
+        "Nachrichtenverlauf verstanden werden kann . Beantworte diese Frage nicht "
         "formuliere sie nur um wenn nötig oder gebe sie nur aus"
     )
 
@@ -124,7 +123,10 @@ async def on_chat_start():
         ]
     )
 
-    llm = ChatOpenAI(model="gpt-3.5-turbo-0125", streaming=True)
+    # better results, better formatting but 10x more expensive compared to GPT-3.5-Turbo
+    # llm = ChatOpenAI(model="gpt-4o", streaming=True)
+    llm = ChatOpenAI(model="gpt-4o-mini", streaming=True)
+    # llm = ChatOpenAI(model="gpt-3.5-turbo-0125", streaming=True)
 
     history_aware_retriever = create_history_aware_retriever(
         llm, retriever, contextualize_q_prompt
@@ -158,6 +160,9 @@ async def on_chat_start():
     conn_info = "postgresql://admin:admin@postgres:5432/chat_history"
     sync_connection = psycopg.connect(conn_info)
     table_name ="chat_history"
+
+    # Create table the first time
+    # PostgresChatMessageHistory.create_tables(sync_connection, table_name)
 
     history = PostgresChatMessageHistory(
         table_name,
