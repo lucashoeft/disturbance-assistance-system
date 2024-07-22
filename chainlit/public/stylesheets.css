@@ -20,3 +20,7 @@ img[alt="logo"] {
 #open-sidebar-button {
     visibility: collapse !important;
 }
+
+svg[data-testid="SortIcon"] {
+    visibility: hidden !important
+}
