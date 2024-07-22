@@ -5,6 +5,7 @@
 /* class-tag for copy-to-clipboard button */
 .css-16i44ew {
     visibility: collapse !important;
+    /* display: none !important; */
 }
 
 /* logo on top left position*/
