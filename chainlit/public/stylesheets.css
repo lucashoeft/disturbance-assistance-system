@@ -2,8 +2,8 @@
     visibility: collapse !important;
 }
 
-/* class-tag for copy-to-clipboard button */
-.css-16i44ew {
+/* class-tag for copy-to-clipboard button (first tag is for dark, the second for light mode */
+.css-16i44ew, .css-1e9n6az {
     visibility: collapse !important;
     display: none !important;
 }

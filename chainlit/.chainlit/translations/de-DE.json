@@ -142,8 +142,8 @@
                         "running": "Running",
                         "executedSuccessfully": "executed successfully",
                         "failed": "failed",
-                        "feedbackUpdated": "Feedback aktualisert",
-                        "updating": "Updating"
+                        "feedbackUpdated": "Feedback aktualisiert",
+                        "updating": "Aktualisieren"
                     }
                 },
                 "dropScreen": {
@@ -159,7 +159,7 @@
                     "settingsPanel": "Settings panel",
                     "reset": "Reset",
                     "cancel": "Cancel",
-                    "confirm": "Confirm"
+                    "confirm": "Bestätigen"
                 }
             },
             "threadHistory": {
@@ -176,8 +176,8 @@
                     },
                     "DeleteThreadButton": {
                         "confirmMessage": "This will delete the thread as well as it's messages and elements.",
-                        "cancel": "Cancel",
-                        "confirm": "Confirm",
+                        "cancel": "Abbrechen",
+                        "confirm": "Bestätigen",
                         "deletingChat": "Deleting chat",
                         "chatDeleted": "Chat deleted"
                     },

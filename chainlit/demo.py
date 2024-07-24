@@ -77,8 +77,8 @@ async def setup_agent(settings):
 async def on_chat_start():
 
     # split with https://platform.openai.com/tokenizer
-    # message = "Hallo Werker bzw. Werkerin, ich unterstützte Sie bei Ihrer Tätigkeit in der Produktion.\n Ich verfüge über Informationen darüber, wie man Störungen beheben kann. Wie kann ich Ihnen weiterhelfen?"
-    message_chunks = ["Hallo", " Werker", " bzw", ".", " Wer", "ker", "in", ",", " ich", " unterst", "ützte", " Sie", " bei", " Ihrer", " T", "ät", "igkeit", " in", " der", " Produ", "ktion", ".", "\n", "Ich", " ver", "fü", "ge", " über", " Informationen", " darüber", ",", " wie", " man", " St", "ör", "ungen", " be", "he", "ben", " kann", ".", " Wie", " kann", " ich", " Ihnen", " weiter", "h", "elf", "en", "?"]
+    # message = "Hallo Werker bzw. Werkerin, ich unterstütze Sie bei Ihrer Tätigkeit in der Produktion.\n Ich verfüge über Informationen darüber, wie man Störungen beheben kann. Wie kann ich Ihnen weiterhelfen?"
+    message_chunks = ["Hallo", " Werker", " bzw", ".", " Wer", "ker", "in", ",", " ich", " unterst", "ütze", " Sie", " bei", " Ihrer", " T", "ät", "igkeit", " in", " der", " Produ", "ktion", ".", "\n", "Ich", " ver", "fü", "ge", " über", " Informationen", " darüber", ",", " wie", " man", " St", "ör", "ungen", " be", "he", "ben", " kann", ".", " Wie", " kann", " ich", " Ihnen", " weiter", "h", "elf", "en", "?"]
     
     msg = cl.Message(content="")
 
