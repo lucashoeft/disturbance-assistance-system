@@ -1,6 +1,0 @@
-Allgemeine Sicherheitshinweise
-
-* Nur im Bereich vor der Maschine stehen
-* Interaktion nur mit der Maschine über den Touchscreen auf der Oberseite und mit dem festmontierten Tablet
-* Werkstückträger dürfen nicht eigenständig transportiert werden, da sonst die Anlage neu kalibriert werden muss 
-* Ein Neustart von Maschine und Tablet darf nur durch den Schichtleiter (Versuchsleiter) geschehen

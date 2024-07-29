@@ -1,14 +1,13 @@
-Störungen bei der Beschichtung
+Arbeitsunterlagen: Störungen bei der Beschichtung
 
-Für eine erfolgreiche Störungsbehebung ist es notwendig, sorgfältig und systematisch vorzugehen. Die Sicherheitshinweise sind zu befolgen.
-
+Für eine erfolgreiche Störungsbehebung ist es notwendig, sorgfältig und systematisch vorzugehen.
 
 Störung-ID: 1
-Störung-Name: Bearbeitung der Werkstücke startet nicht
+Störung-Name: Bearbeitung der Werkstücke startet nicht.
 Zusammenfassung: Trotz Button-Klick Bearbeitung starten, startet die Bearbeitung nicht.
 Betroffene Komponenten: Beschichtungsmaschine
 Ursache: Software-Bug
-Lösungsschritte: Wenn trotz mehrmaligen Drückens des Buttons die Bearbeitung nicht startet, ist es notwendig den Schichtleiter (Versuchsleiter) zu kontaktieren, der die Maschine wartet.
+Lösungsschritte: Wenn trotz mehrmaligen Drückens des Buttons die Bearbeitung nicht startet, ist es notwendig, den Schichtleiter zu kontaktieren, der die Maschine wartet.
 
 
 Störung-ID: 3
@@ -31,15 +30,15 @@ Störung-ID: 6
 Störung-Name: Ausgeschaltetes Tablet
 Zusammenfassung: Das Tablet für die Auftragsliste ist ausgeschaltet, der Bildschirm ist aus.
 Betroffene Komponenten: Tablet
-Ursache: Ein leerer Akku des Tablets, die Aktivierung des Ruhemodus oder das Tablet wurde noch nicht durch den Schichtleiter angeschaltet und konfiguriert.
+Ursache: Ein leerer Akku des Tablets oder das Tablet wurde noch nicht durch den Schichtleiter angeschaltet und konfiguriert.
 Lösungsschritte: Kontaktieren Sie den Schichtleiter, der die notwendigen Arbeitsschritte zum Anschalten des Tablets durchführen wird.
 
 
 Störung-ID: 7
 Störung-Name: Ausgeschaltete Rollenbahn
-Zusammenfassung: Die Rollenbahn sind ausgeschaltet und die Werkstückträger werden nicht transportiert
+Zusammenfassung: Die Rollenbahn ist ausgeschaltet und die Werkstückträger werden nicht transportiert.
 Betroffene Komponenten: Rollenbahn
-Ursache: Rollenbahn wurde noch nicht angeschaltet und konfiguriert
+Ursache: Rollenbahn wurde noch nicht angeschaltet und konfiguriert.
 Lösungsschritte: Kontaktieren Sie den Schichtleiter, der die notwendigen Arbeitsschritte zum Anschalten der Rollenbahn durchführen wird.
 
 
@@ -47,7 +46,7 @@ Störung-ID: 9
 Störung-Name: Wiederholende Aufträge
 Zusammenfassung: In der Auftragsliste erscheint nach Abarbeitung des Auftrages der identische Auftrag wieder.
 Betroffene Komponenten: Auftragsliste
-Ursache: Der Auftrag zur Beschichtung optischer Linsen war größer als die verfügbare Fläche des Werkstückträgers, weshalb der gleiche Auftrag mehrmals erstellt wurde. 
+Ursache: Der Auftrag zur Beschichtung optischer Linsen war größer als die verfügbare Fläche des Werkstückträgers, weshalb der gleiche Auftrag mehrmals erstellt wurde.
 Lösungsschritte: Der Fehler kann ignoriert werden.
 
 
@@ -63,8 +62,8 @@ Störung-ID: 11
 Störung-Name: Fehlerhafte Auftragsdaten
 Zusammenfassung: Bei der Beschichtungsmaschine bricht die Beschichtung ab, weil die Auftragsdaten in einem vorigen Arbeitsschritt falsch in die Auftragsliste übertragen worden sind.
 Betroffene Komponenten: Beschichtungsmaschine, Auftragsliste
-Ursache: Die Auftragsdaten wurden falsch übertragen, wodurch es zu einem Fehler der Maschine kommt. 
-Lösungsschritte: Die Bearbeitungsparameter müssen angepasst werden. Wichtig ist es den Beschichtungstyp und die Tönung (15%, 20%, 30% oder 40%) beizubehalten. Es muss die Beschichtungsdicke angepasst werden, denn die Tönung ist eine Mindestbeschichtungsdicke notwendig. Wenn die Beschichtungsdicke angepasst wurde, kann die Beschichtung wieder gestartet werden. Für die niedrigste Tönung (15%) sind alle Beschichtungsdicken (100 μm (Mikrometer), 100 μm, 150 μm, 180 μm , 210 μm) möglich. Für die Tönung von 20% können alle Beschichtungsdicken über 150 μm ausgewählt werden. Für die Tönung von 30% können alle Beschichtungsdicken über 180 μm ausgewählt werden. Für die stärkste Tönung (40%) kann nur die höchste Beschichtungsdicke (210μm) ausgewählt werden.
+Ursache: Die Auftragsdaten wurden falsch übertragen, wodurch es zu einem Fehler der Maschine kommt.
+Lösungsschritte: Es muss die Beschichtungsdicke angepasst werden, denn für die jede Tönung ist eine Mindestbeschichtungsdicke notwendig. Wichtig ist es, den Beschichtungstyp und die Tönung des Auftrages beizubehalten. Für die niedrigste Tönung (15%) können alle Beschichtungsdicken (100 μm, 150 μm, 180 μm, 210 μm) ausgewählt werden. Für die Tönung von 20% können alle Beschichtungsdicken über 150 μm ausgewählt werden. Für die Tönung von 30% können alle Beschichtungsdicken über 180 μm ausgewählt werden. Für die stärkste Tönung (40%) kann nur die höchste Beschichtungsdicke (210 μm) ausgewählt werden. Wenn die Beschichtungsdicke angepasst wurde, kann die Beschichtung wieder gestartet werden.
 
 
 Störung-ID: 12
@@ -80,7 +79,7 @@ Störung-Name: Erhöhter Druck
 Zusammenfassung: Die Anzeige für Druck befindet sich im roten Bereich.
 Betroffene Komponenten: Beschichtungsmaschine
 Ursache: Zu hohe Auslastung, wodurch und Druckabsenkung nicht stattfinden kann.
-Lösungsschritte: Auslastung verringern durch Pausenzeiten zwischen Beschichtungsdurchgängen. Die zweite Möglichkeit ist das Getriebeöl nachzufüllen. In jedem Fall kann die Beschichtung wieder gestartet werden.
+Lösungsschritte: Die Auslastung verringern durch Pausenzeiten zwischen Beschichtungsdurchgängen. Die zweite Möglichkeit ist, das Getriebeöl aufzufüllen. In jedem Fall kann die Beschichtung wieder gestartet werden.
 
 
 Störung-ID: 16
@@ -88,7 +87,7 @@ Störung-Name: Fehlendes Kühlmittel
 Zusammenfassung: Bei der Beschichtungsmaschine bricht die Beschichtung ab, weil nicht mehr genügend Kühlmittel vorhanden ist. Die Temperaturanzeige bewegt sich dabei kurz im roten Bereich und ist danach im gelben Bereich.
 Betroffene Komponenten: Beschichtungsmaschine, Kühlmittel
 Ursache: Nicht genügend Kühlmittel
-Lösungsschritte: Es muss über den Button „Kühlmittel nachfüllen“ das fehlende Kühlmittel nachgefüllt werden. Das Kühlmittel wird dafür von der Maschine nachgefüllt. Danach kann Beschichtung wieder gestartet werden.
+Lösungsschritte: Es muss über den Button „Kühlmittel auffüllen“ das fehlende Kühlmittel nachgefüllt werden. Das Kühlmittel wird dafür von der Maschine nachgefüllt. Danach kann die Beschichtung wieder gestartet werden.
 
 
 Störung-ID: 19
@@ -96,11 +95,11 @@ Störung-Name: Fehlerhaft beschichtete Linsen
 Zusammenfassung: Nachdem die Beschichtung der Linsen erfolgt ist, wurden bei der Sichtkontrolle des Werkstückträgers fehlerhaft beschichtete Linsen festgestellt.
 Betroffene Komponenten: Werkstückträger
 Ursache: Die optischen Linsen hatten bereits Qualitätsmängel, wodurch es zu einer Beschädigung durch die Beschichtungsmaschine kam.
-Lösungsschritte: Über Tablet in Auftragsliste die Anzahl der einwandfreien und fehlerhaften Linsen auswählen und den Auftrag abschließen.
+Lösungsschritte: Über Tablet in der Auftragsliste die Anzahl der einwandfreien und fehlerhaften Linsen auswählen und den Auftrag abschließen.
 
 
 Störung-ID: 21
 Störung-Name: Unbekannte Störung
 Zusammenfassung: Eine unbekannte Störung ist aufgetreten.
 Ursache: Unbekannt
-Lösungsschritte: Unbekannte Störungen lassen sich meist auf bekannte Störungen zurückführen. Inspiziere den Touchscreen der Beschichtungsmaschine und das Tablet mit den Auftragsdaten. Wenn sich der Werkstückträger außerhalb der Maschine befindet, inspiziere auch diesen. Um die Störung zu beheben, muss anhand der aufgetreten Auffälligkeiten die eigentliche Störung gefunden werden.
+Lösungsschritte: Unbekannte Störungen lassen sich meist auf bekannte Störungen zurückführen. Inspiziere den Touchscreen der Beschichtungsmaschine und das Tablet mit den Auftragsdaten. Wenn sich der Werkstückträger außerhalb der Maschine befindet, inspiziere auch diesen. Um die Störung zu beheben, muss anhand der aufgetretenen Auffälligkeiten die eigentliche Störung gefunden werden.
