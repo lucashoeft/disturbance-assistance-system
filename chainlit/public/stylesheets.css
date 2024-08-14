@@ -1,14 +1,15 @@
+/* hide watermark below chatd */
 .watermark {
     visibility: collapse !important;
 }
 
-/* class-tag for copy-to-clipboard button (first tag is for dark, the second for light mode */
+/* hide copy-to-clipboard button (first tag is for dark, the second for light mode */
 .css-16i44ew, .css-1e9n6az {
     visibility: collapse !important;
     display: none !important;
 }
 
-/* logo on top left position*/
+/* hide logo on top left position*/
 img[alt="logo"] {
     visibility: collapse !important;
 }
@@ -18,10 +19,12 @@ img[alt="logo"] {
     visibility: collapse !important;
 }
 
+/* hide sidebar menu button on regular screens */
 #open-sidebar-button {
     visibility: collapse !important;
 }
 
+/* hide sidebar menu button on smaller screen */
 svg[data-testid="SortIcon"] {
     visibility: hidden !important
 }
