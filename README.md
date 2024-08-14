@@ -12,6 +12,8 @@ LANGFUSE_SECRET_KEY="sk.."
 
 When working with langfuse, it is also neccessary to add `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` to the `.env`-file. These keys can be obtained after setting up the project in langfuse (access via http://localhost:3000).
 
+To get the chat history working, you need to create the required tables (`chat_history`) in the Postgres database. You can use `PostgresChatMessageHistory.create_tables(sync_connection, table_name)` from `langchain_postgres` and add it to the `demo.py` file.
+
 To get the vector database properly working, you need to add documents. You can add the documents provided in `/data` or create your own documents. You can add documents to the database with `ingest.py` in the data folder.
 
 ### Working with Docker
