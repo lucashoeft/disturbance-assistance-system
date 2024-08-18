@@ -24,12 +24,9 @@ from langchain.schema.runnable.config import RunnableConfig
 dotenv.load_dotenv()
 
 OPENAI_API_KEY = os.getenv('OPEN_AI_API_KEY')
-OPENAI_CHAT_MODEL = os.getenv('OPENAI_CHAT_MODEL')
 LANGFUSE_PUBLIC_KEY = os.getenv('LANGFUSE_PUBLIC_KEY')
 LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
-LANGFUSE_HOST = os.getenv('LANGFUSE_HOST')
 VECTOR_DB = os.getenv('VECTOR_DB')
-CHAT_HISTORY_DB = os.getenv('CHAT_HISTORY_DB')
 
 class UserFeedbackDataLayer(cl_data.BaseDataLayer):
     
@@ -38,7 +35,7 @@ class UserFeedbackDataLayer(cl_data.BaseDataLayer):
         langfuse = Langfuse(
             public_key=LANGFUSE_PUBLIC_KEY,
             secret_key=LANGFUSE_SECRET_KEY,
-            host=LANGFUSE_HOST,
+            host="http://host.docker.internal:3000",
         )
         
         feedback_trace = langfuse.trace()
@@ -75,7 +72,8 @@ async def on_chat_start():
 
     # Connection to Vector DB
 
-    connection_vector_db = VECTOR_DB # Uses psycopg3!
+    connection_vector_db = "postgresql+psycopg://admin:admin@postgres:5432/vectordb" # Uses psycopg3!
+    
     vectorstore = PGVector(
         embeddings=OpenAIEmbeddings(model="text-embedding-3-large", api_key=OPENAI_API_KEY),
         collection_name="disturbances",
@@ -87,7 +85,8 @@ async def on_chat_start():
 
     # Connection to Chat History
 
-    connection_chat_history = psycopg.connect(CHAT_HISTORY_DB)
+    connection_string = "postgresql://admin:admin@postgres:5432/chat_history"
+    connection_chat_history = psycopg.connect(connection_string)
     table_name ="chat_history"
 
     # Create table the first time
@@ -116,7 +115,7 @@ async def on_chat_start():
         ]
     )
 
-    llm = ChatOpenAI(model=OPENAI_CHAT_MODEL, streaming=True, api_key=OPENAI_API_KEY)
+    llm = ChatOpenAI(model="gpt-4o-mini", streaming=True, api_key=OPENAI_API_KEY)
 
     history_aware_retriever = create_history_aware_retriever(
         llm, retriever, contextualize_quesion_prompt
@@ -163,7 +162,7 @@ async def on_chat_start():
     langfuse_handler = CallbackHandler(
         public_key=LANGFUSE_PUBLIC_KEY,
         secret_key=LANGFUSE_SECRET_KEY,
-        host=LANGFUSE_HOST,
+        host="http://host.docker.internal:3000",
         session_id=session_id
     )
 
