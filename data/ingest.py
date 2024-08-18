@@ -1,21 +1,23 @@
-from langchain.text_splitter import CharacterTextSplitter
 import os
+
 from dotenv import load_dotenv
-from langchain_openai import OpenAIEmbeddings
+from langchain.text_splitter import CharacterTextSplitter
 from langchain_core.documents import Document
+from langchain_community.document_loaders import TextLoader
+from langchain_openai import OpenAIEmbeddings
 from langchain_postgres import PGVector
 from langchain_postgres.vectorstores import PGVector
-from langchain_community.document_loaders import TextLoader
 
 load_dotenv()
 
 OPEN_API_KEY = os.getenv('OPEN_AI_API_KEY')
+VECTOR_DB = os.getenv('VECTOR_DB')
 
-connection = "postgresql+psycopg://admin:admin@localhost:5433/vectordb"  # Uses psycopg3!
+connection = VECTOR_DB  # Uses psycopg3!
 
 vectorstore = PGVector(
     embeddings=OpenAIEmbeddings(model="text-embedding-3-large"),
-    collection_name="my_docs",
+    collection_name="disturbances",
     connection=connection,
     use_jsonb=True,
 )
