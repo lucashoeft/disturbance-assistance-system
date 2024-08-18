@@ -10,12 +10,12 @@ from langchain_postgres.vectorstores import PGVector
 
 load_dotenv()
 
-OPEN_API_KEY = os.getenv('OPEN_AI_API_KEY')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 connection = "postgresql+psycopg://admin:admin@localhost:5433/vectordb"  # Uses psycopg3!
 
 vectorstore = PGVector(
-    embeddings=OpenAIEmbeddings(model="text-embedding-3-large"),
+    embeddings=OpenAIEmbeddings(model="text-embedding-3-large", api_key=OPENAI_API_KEY),
     collection_name="disturbances",
     connection=connection,
     use_jsonb=True,
