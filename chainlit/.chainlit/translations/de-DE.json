@@ -4,10 +4,10 @@
             "buttons": {
                 "userButton": {
                     "menu": {
-                        "settings": "Settings",
+                        "settings": "Einstellungen",
                         "settingsKey": "S",
-                        "APIKeys": "API Keys",
-                        "logout": "Logout"
+                        "APIKeys": "API-Schlüssel",
+                        "logout": "Abmelden"
                     }
                 }
             }
@@ -18,14 +18,14 @@
             },
             "tasklist": {
                 "TaskList": {
-                    "title": "\ud83d\uddd2\ufe0f Task List",
-                    "loading": "Loading...",
-                    "error": "An error occurred"
+                    "title": "\ud83d\uddd2\ufe0f Aufgabenliste",
+                    "loading": "Lädt...",
+                    "error": "Ein Fehler ist aufgetreten"
                 }
             },
             "attachments": {
-                "cancelUpload": "Cancel upload",
-                "removeAttachment": "Remove attachment"
+                "cancelUpload": "Hochladen abrrechen",
+                "removeAttachment": "Anhang entfernen"
             },
             "newChatDialog": {
                 "createNewChat": "Neuen Chat erstellen?",
@@ -35,76 +35,76 @@
             },
             "settingsModal": {
                 "settings": "Einstellungen",
-                "expandMessages": "Expand Messages",
-                "hideChainOfThought": "Hide Chain of Thought",
+                "expandMessages": "Nachrichten erweitern",
+                "hideChainOfThought": "Chain of Thought verbergen",
                 "darkMode": "Dunkler Modus"
             },
             "detailsButton": {
-                "using": "Using",
-                "used": "Used"
+                "using": "Verwenden",
+                "used": "Verwendet"
             },
             "auth": {
                 "authLogin": {
-                    "title": "Login to access the app.",
+                    "title": "Melden Sie sich an, um auf den Störungsassistent zuzugreifen.",
                     "form": {
-                        "email": "Email address",
-                        "password": "Password",
-                        "noAccount": "Don't have an account?",
-                        "alreadyHaveAccount": "Already have an account?",
-                        "signup": "Sign Up",
-                        "signin": "Sign In",
-                        "or": "OR",
-                        "continue": "Continue",
-                        "forgotPassword": "Forgot password?",
-                        "passwordMustContain": "Your password must contain:",
-                        "emailRequired": "email is a required field",
-                        "passwordRequired": "password is a required field"
+                        "email": "E-Mail Adresse",
+                        "password": "Passwort",
+                        "noAccount": "Noch kein Konto?",
+                        "alreadyHaveAccount": "Bereits ein Konto?",
+                        "signup": "Registrieren",
+                        "signin": "Anmelden",
+                        "or": "ODER",
+                        "continue": "Weiter",
+                        "forgotPassword": "Passwort vergessen?",
+                        "passwordMustContain": "Ihr Passwort muss enthalten:",
+                        "emailRequired": "E-Mail ist ein Pflichtfeld",
+                        "passwordRequired": "Passwort ist ein Pflichtfeld"
                     },
                     "error": {
-                        "default": "Unable to sign in.",
-                        "signin": "Try signing in with a different account.",
-                        "oauthsignin": "Try signing in with a different account.",
-                        "redirect_uri_mismatch": "The redirect URI is not matching the oauth app configuration.",
-                        "oauthcallbackerror": "Try signing in with a different account.",
-                        "oauthcreateaccount": "Try signing in with a different account.",
-                        "emailcreateaccount": "Try signing in with a different account.",
-                        "callback": "Try signing in with a different account.",
-                        "oauthaccountnotlinked": "To confirm your identity, sign in with the same account you used originally.",
-                        "emailsignin": "The e-mail could not be sent.",
-                        "emailverify": "Please verify your email, a new email has been sent.",
-                        "credentialssignin": "Sign in failed. Check the details you provided are correct.",
-                        "sessionrequired": "Please sign in to access this page."
+                        "default": "Anmeldung nicht möglich.",
+                        "signin": "Versuchen Sie sich mit einem anderen Konto anzumelden.",
+                        "oauthsignin": "Versuchen Sie sich mit einem anderen Konto anzumelden.",
+                        "redirect_uri_mismatch": "Die URI stimmt nicht mit der OAuth-App-Konfiguration überein.",
+                        "oauthcallbackerror": "Versuchen Sie sich mit einem anderen Konto anzumelden.",
+                        "oauthcreateaccount": "Versuchen Sie sich mit einem anderen Konto anzumelden.",
+                        "emailcreateaccount": "Versuchen Sie sich mit einem anderen Konto anzumelden.",
+                        "callback": "Versuchen Sie sich mit einem anderen Konto anzumelden.",
+                        "oauthaccountnotlinked": "Um Ihre Identität zu bestätigen, melden Sie sich mit Ihrem ursprünglichen Konto an.",
+                        "emailsignin": "Die E-Mail konnte nicht gesendet werden.",
+                        "emailverify": "Bitte verifizieren Sie Ihre E-Mail, eine neue E-Mail wurde versendet.",
+                        "credentialssignin": "Anmeldung fehlgeschlagen. Überprüfen Sie die von Ihnen angegebenen Daten.",
+                        "sessionrequired": "Bitte melden Sie sich an, um auf diese Seite zuzugreifen."
                     }
                 },
                 "authVerifyEmail": {
-                    "almostThere": "You're almost there! We've sent an email to ",
-                    "verifyEmailLink": "Please click on the link in that email to complete your signup.",
-                    "didNotReceive": "Can't find the email?",
-                    "resendEmail": "Resend email",
-                    "goBack": "Go Back",
-                    "emailSent": "Email sent successfully.",
-                    "verifyEmail": "Verify your email address"
+                    "almostThere": "Fast geschafft! Eine E-Mail wurde gesendet an ",
+                    "verifyEmailLink": "Bitte klicken Sie auf den Link in dieser E-Mail, um Ihre Anmeldung abzuschließen.",
+                    "didNotReceive": "E-Mail nicht erhalten?",
+                    "resendEmail": "E-Mail erneut senden",
+                    "goBack": "Zurück",
+                    "emailSent": "E-Mail erfolgreich gesendet.",
+                    "verifyEmail": "Bestätigen Sie Ihre E-Mail-Adresse"
                 },
                 "providerButton": {
-                    "continue": "Continue with {{provider}}",
-                    "signup": "Sign up with {{provider}}"
+                    "continue": "Weiter mit {{provider}}",
+                    "signup": "Registrieren mit {{provider}}"
                 },
                 "authResetPassword": {
-                    "newPasswordRequired": "New password is a required field",
-                    "passwordsMustMatch": "Passwords must match",
-                    "confirmPasswordRequired": "Confirm password is a required field",
-                    "newPassword": "New password",
-                    "confirmPassword": "Confirm password",
-                    "resetPassword": "Reset Password"
+                    "newPasswordRequired": "Neues Passwort ist ein Pflichtfeld",
+                    "passwordsMustMatch": "Passwörter müssen übereinstimmen",
+                    "confirmPasswordRequired": "Passwort bestätigen ist ein Pflichtfeld",
+                    "newPassword": "Neues Passwort",
+                    "confirmPassword": "Passwort bestätigen",
+                    "resetPassword": "Passwort zurücksetzen"
                 },
                 "authForgotPassword": {
-                    "email": "Email address",
-                    "emailRequired": "email is a required field",
-                    "emailSent": "Please check the email address {{email}} for instructions to reset your password.",
-                    "enterEmail": "Enter your email address and we will send you instructions to reset your password.",
-                    "resendEmail": "Resend email",
-                    "continue": "Continue",
-                    "goBack": "Go Back"
+                    "email": "E-Mail Adresse",
+                    "emailRequired": "E-Mail ist ein Pflichtfeld",
+                    "emailSent": "Bitte überprüfen Sie die E-Mail Adresse {{email}} für Anweisungen zum Zurücksetzen Ihres Passworts.",
+                    "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein um Anweisungen zum Zurücksetzen Ihres Passworts zu erhalten.",
+                    "resendEmail": "E-Mail erneut senden",
+                    "continue": "Weiter",
+                    "goBack": "Zurück"
                 }
             }
         },
@@ -112,10 +112,10 @@
             "chat": {
                 "history": {
                     "index": {
-                        "showHistory": "Show history",
-                        "lastInputs": "Last Inputs",
-                        "noInputs": "Such empty...",
-                        "loading": "Loading..."
+                        "showHistory": "Verlauf anzeigen",
+                        "lastInputs": "Letzte Eingaben",
+                        "noInputs": "So leer...",
+                        "loading": "Lädt..."
                     }
                 },
                 "inputBox": {
@@ -123,42 +123,42 @@
                         "placeholder": "Gebe Nachricht ein..."
                     },
                     "speechButton": {
-                        "start": "Start recording",
-                        "stop": "Stop recording"
+                        "start": "Aufnahme starten",
+                        "stop": "Aufnahme stoppen"
                     },
                     "SubmitButton": {
                         "sendMessage": "Sende Nachricht",
                         "stopTask": "Beende Aufgabe"
                     },
                     "UploadButton": {
-                        "attachFiles": "Attach files"
+                        "attachFiles": "Dateien anhängen"
                     },
                     "waterMark": {
-                        "text": "Built with"
+                        "text": "Erstellt mit"
                     }
                 },
                 "Messages": {
                     "index": {
-                        "running": "Running",
-                        "executedSuccessfully": "executed successfully",
-                        "failed": "failed",
+                        "running": "Wird ausgeführt",
+                        "executedSuccessfully": "erfolgreich ausgeführt",
+                        "failed": "fehlgeschlagen",
                         "feedbackUpdated": "Feedback aktualisiert",
                         "updating": "Aktualisieren"
                     }
                 },
                 "dropScreen": {
-                    "dropYourFilesHere": "Drop your files here"
+                    "dropYourFilesHere": "Dateien hier ablegen"
                 },
                 "index": {
-                    "failedToUpload": "Failed to upload",
-                    "cancelledUploadOf": "Cancelled upload of",
-                    "couldNotReachServer": "Could not reach the server",
-                    "continuingChat": "Continuing previous chat"
+                    "failedToUpload": "Upload fehlgeschlagen",
+                    "cancelledUploadOf": "Upload abgebrochen von",
+                    "couldNotReachServer": "Konnte den Server nicht erreichen",
+                    "continuingChat": "Vorherigen Chat fortsetzen"
                 },
                 "settings": {
-                    "settingsPanel": "Settings panel",
-                    "reset": "Reset",
-                    "cancel": "Cancel",
+                    "settingsPanel": "Einstellungen",
+                    "reset": "Zurücksetzen",
+                    "cancel": "Abbrechen",
                     "confirm": "Bestätigen"
                 }
             },
@@ -166,39 +166,39 @@
                 "sidebar": {
                     "filters": {
                         "FeedbackSelect": {
-                            "feedbackAll": "Feedback: All",
-                            "feedbackPositive": "Feedback: Positive",
-                            "feedbackNegative": "Feedback: Negative"
+                            "feedbackAll": "Feedback: Alles",
+                            "feedbackPositive": "Feedback: Positiv",
+                            "feedbackNegative": "Feedback: Negativ"
                         },
                         "SearchBar": {
-                            "search": "Search"
+                            "search": "Suche"
                         }
                     },
                     "DeleteThreadButton": {
-                        "confirmMessage": "This will delete the thread as well as it's messages and elements.",
+                        "confirmMessage": "Dadurch wird der Thread sowie dessen Nachrichten gelöscht.",
                         "cancel": "Abbrechen",
                         "confirm": "Bestätigen",
-                        "deletingChat": "Deleting chat",
-                        "chatDeleted": "Chat deleted"
+                        "deletingChat": "Chat wird gelöscht",
+                        "chatDeleted": "Chat gelöscht"
                     },
                     "index": {
-                        "pastChats": "Past Chats"
+                        "pastChats": "Frühere Chats"
                     },
                     "ThreadList": {
-                        "empty": "Empty...",
-                        "today": "Today",
-                        "yesterday": "Yesterday",
-                        "previous7days": "Previous 7 days",
-                        "previous30days": "Previous 30 days"
+                        "empty": "Leer...",
+                        "today": "Heute",
+                        "yesterday": "Gestern",
+                        "previous7days": "Letzte 7 Tage",
+                        "previous30days": "Letzte 30 Tage"
                     },
                     "TriggerButton": {
-                        "closeSidebar": "Close sidebar",
-                        "openSidebar": "Open sidebar"
+                        "closeSidebar": "Seitenleiste schließen",
+                        "openSidebar": "Seitenleiste öffnen"
                     }
                 },
                 "Thread": {
-                    "backToChat": "Go back to chat",
-                    "chatCreatedOn": "This chat was created on"
+                    "backToChat": "Zurück zum Chat",
+                    "chatCreatedOn": "Dieser Chat wurde erstellt am"
                 }
             },
             "header": {
@@ -209,21 +209,21 @@
     },
     "hooks": {
         "useLLMProviders": {
-            "failedToFetchProviders": "Failed to fetch providers:"
+            "failedToFetchProviders": "Anbieter konnten nicht abgerufen werden:"
         }
     },
     "pages": {
         "Design": {},
         "Env": {
-            "savedSuccessfully": "Saved successfully",
-            "requiredApiKeys": "Required API Keys",
-            "requiredApiKeysInfo": "To use this app, the following API keys are required. The keys are stored on your device's local storage."
+            "savedSuccessfully": "SErfolgreich gespeichert",
+            "requiredApiKeys": "Erforderliche API-Schlüssel",
+            "requiredApiKeysInfo": "Um den Störungsassistent zu nutzen, sind die folgenden API-Schlüssel erforderlich. Die Schlüssel werden im lokalen Speicher Ihres Geräts gespeichert."
         },
         "Page": {
-            "notPartOfProject": "You are not part of this project."
+            "notPartOfProject": "Sie sind nicht Teil dieses Projekts."
         },
         "ResumeButton": {
-            "resumeChat": "Resume Chat"
+            "resumeChat": "Chat fortsetzen"
         }
     }
 }
