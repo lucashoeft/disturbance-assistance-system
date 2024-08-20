@@ -12,10 +12,12 @@ load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-connection = "postgresql+psycopg://admin:admin@localhost:5433/vectordb"  # Uses psycopg3
+# Connection uses psycopg3
+connection = "postgresql+psycopg://admin:admin@localhost:5433/vectordb"  
 
 vector_store = PGVector(
-    embeddings=OpenAIEmbeddings(model="text-embedding-3-large", api_key=OPENAI_API_KEY),
+    embeddings=OpenAIEmbeddings(model="text-embedding-3-large", 
+                                api_key=OPENAI_API_KEY),
     collection_name="disturbances",
     connection=connection,
     use_jsonb=True,
@@ -32,11 +34,16 @@ loader = TextLoader("störungen_beschichtung.txt")
 
 for doc in loader.load():
 
-    # Split the file in smaller text splits (based on separator character)
+    # Split the file in smaller text splits 
+    # (based on separator character)
     texts_split = text_splitter.split_text(doc.page_content)
     
-    # Create documents based on the text splits (metadata is from the original file)
-    documents_split = text_splitter.create_documents(texts_split, metadatas=[doc.metadata] * len(texts_split))
+    # Create documents based on the text splits 
+    # (metadata is from the original file)
+    documents_split = text_splitter.create_documents(
+        texts_split, 
+        metadatas=[doc.metadata] * len(texts_split))
     
-    # Add the documents to the vector store (embeddings are created automatically)
+    # Add the documents to the vector store 
+    # (embeddings are created automatically)
     vector_store.add_documents(documents_split)

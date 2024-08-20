@@ -52,13 +52,19 @@ cl_data._data_layer=UserFeedbackDataLayer()
 async def on_chat_start():
 
     # split with https://platform.openai.com/tokenizer
-    # message = "Hallo Werker bzw. Werkerin, ich unterstütze Sie bei Ihrer Tätigkeit in der Produktion.\n Ich verfüge über Informationen darüber, wie man Störungen beheben kann. Wie kann ich Ihnen weiterhelfen?"
-    message_chunks = ["Hallo", " Werker", " bzw", ".", " Wer", "ker", "in", ",", 
-                      " ich", " unterst", "ütze", " Sie", " bei", " Ihrer", " T", "ät", "igkeit", 
-                      " in", " der", " Produ", "ktion", ".", "\n", "Ich", " ver", "fü", "ge", 
-                      " über", " Informationen", " darüber", ",", " wie", " man", 
-                      " St", "ör", "ungen", " be", "he", "ben", " kann", ".", " Wie", 
-                      " kann", " ich", " Ihnen", " weiter", "h", "elf", "en", "?"]
+    # message = "Hallo Werker bzw. Werkerin, ich unterstütze Sie bei 
+    #            Ihrer Tätigkeit in der Produktion.\n Ich verfüge über 
+    #            Informationen darüber, wie man Störungen beheben kann. 
+    #            Wie kann ich Ihnen weiterhelfen?"
+    message_chunks = ["Hallo", " Werker", " bzw", ".", " Wer", "ker", 
+                      "in", ",", " ich", " unterst", "ütze", " Sie", 
+                      " bei", " Ihrer", " T", "ät", "igkeit", " in", 
+                      " der", " Produ", "ktion", ".", "\n", "Ich", 
+                      " ver", "fü", "ge", " über", " Informationen", 
+                      " darüber", ",", " wie", " man", " St", "ör", 
+                      "ungen", " be", "he", "ben", " kann", ".", " Wie", 
+                      " kann", " ich", " Ihnen", " weiter", "h", "elf", 
+                      "en", "?"]
     
     msg = cl.Message(content="")
 
@@ -73,11 +79,12 @@ async def on_chat_start():
     session_id = str(uuid.UUID(int=random.getrandbits(128), version=4))
     cl.user_session.set("session_id", session_id)
 
-    # Connection to Vector DB
-    connection_vector_db = "postgresql+psycopg://admin:admin@postgres:5432/vectordb" # Uses psycopg3
+    # Connection to Vector DB uses psycopg3
+    connection_vector_db = "postgresql+psycopg://admin:admin@postgres:5432/vectordb" 
     
     vector_store = PGVector(
-        embeddings=OpenAIEmbeddings(model="text-embedding-3-large", api_key=OPENAI_API_KEY),
+        embeddings=OpenAIEmbeddings(model="text-embedding-3-large", 
+                                    api_key=OPENAI_API_KEY),
         collection_name="disturbances",
         connection=connection_vector_db,
         use_jsonb=True,
@@ -91,7 +98,10 @@ async def on_chat_start():
     table_name ="chat_history"
 
     # Create table the first time
-    # PostgresChatMessageHistory.create_tables(sync_connection, table_name)
+    # PostgresChatMessageHistory.create_tables(
+    #   sync_connection, 
+    #   table_name
+    # )
 
     history = PostgresChatMessageHistory(
         table_name,
@@ -102,10 +112,11 @@ async def on_chat_start():
     # Build RAG Chain
 
     contextualize_question_system_prompt = (
-        "Basierend auf den Nachrichtenverlauf und der letzten Nutzereingabe "
-        "welche sich eventuell auf den Nachrichtenverlauf bezieht "
-        "erstelle eine eigenständige Frage, die auch ohne den "
-        "Nachrichtenverlauf verstanden werden kann. Beantworte diese Frage nicht."
+        "Basierend auf den Nachrichtenverlauf und der letzten "
+        "Nutzereingabe welche sich eventuell auf den "
+        "Nachrichtenverlauf bezieht erstelle eine eigenständige Frage, "
+        "die auch ohne den Nachrichtenverlauf verstanden werden kann. "
+        "Beantworte diese Frage nicht."
     )
 
     contextualize_quesion_prompt = ChatPromptTemplate.from_messages(
@@ -116,21 +127,29 @@ async def on_chat_start():
         ]
     )
 
-    llm = ChatOpenAI(model="gpt-4o-mini", streaming=True, api_key=OPENAI_API_KEY)
+    llm = ChatOpenAI(
+        model="gpt-4o-mini", 
+        streaming=True, 
+        api_key=OPENAI_API_KEY
+    )
 
     history_aware_retriever = create_history_aware_retriever(
-        llm, retriever, contextualize_quesion_prompt
+        llm, 
+        retriever, 
+        contextualize_quesion_prompt
     )
 
     system_prompt = (
         "Du bist ein Assistent zum Beantworten von Fragen zu Störungen "
-        "im Beschichtungsprozess in der Produktion von optischen Linsen. "
-        "Nutze die folgenden Kontextinformationen um darauf basierend "
-        "eine Antwort zu generieren. Sage ich weiß nicht, wenn du die Frage "
-        "nicht beantworten kannst. Frage nach einer Beschreibung der Situation, "
-        "um mehr Informationen zu erhalten und ob die Informationen geholfen haben."
-        "Sieze immer, also verwende Sie anstatt Du. Der Hinweis darf nicht sein die Maschine auzuschalten."
-        "Die Kontextinformationen aus den Dokumenten sind wichtiger als der Nachrichtenverlauf"
+        "im Beschichtungsprozess in der Produktion von optischen "
+        "Linsen. Nutze die folgenden Kontextinformationen um darauf "
+        "basierend eine Antwort zu generieren. Sage ich weiß nicht, "
+        "wenn du die Frage nicht beantworten kannst. Frage nach einer "
+        "Beschreibung der Situation, um mehr Informationen zu erhalten "
+        "und ob die Informationen geholfen haben. Sieze immer, also "
+        "verwende Sie anstatt Du. Der Hinweis darf nicht sein "
+        "die Maschine auzuschalten. Die Kontextinformationen aus den "
+        "Dokumenten sind wichtiger als der Nachrichtenverlauf"
         "\n\n"
         "{context}"
     )
@@ -143,9 +162,15 @@ async def on_chat_start():
         ]
     )
 
-    question_answer_chain = create_stuff_documents_chain(llm, question_prompt)
+    question_answer_chain = create_stuff_documents_chain(
+        llm, 
+        question_prompt
+    )
 
-    rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
+    rag_chain = create_retrieval_chain(
+        history_aware_retriever,
+        question_answer_chain
+    )
 
     conversational_rag_chain = RunnableWithMessageHistory(
         rag_chain,
@@ -175,7 +200,12 @@ async def main(message: cl.Message):
     conversational_rag_chain = cl.user_session.get("conversational_rag_chain")
     langfuse_handler = cl.user_session.get("langfuse_handler")
     
-    config=RunnableConfig(callbacks=[langfuse_handler], configurable={"session_id": user_sesion_id, "message_id": message.id})
+    config = RunnableConfig(
+        callbacks=[langfuse_handler], 
+        configurable= {
+            "session_id": user_sesion_id, 
+            "message_id": message.id}
+    )
     
     msg = cl.Message(content="")
 
