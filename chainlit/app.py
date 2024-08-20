@@ -26,7 +26,6 @@ dotenv.load_dotenv()
 OPENAI_API_KEY = os.getenv("OPEN_AI_API_KEY")
 LANGFUSE_PUBLIC_KEY = os.getenv("LANGFUSE_PUBLIC_KEY")
 LANGFUSE_SECRET_KEY = os.getenv("LANGFUSE_SECRET_KEY")
-VECTOR_DB = os.getenv("VECTOR_DB")
 
 class UserFeedbackDataLayer(cl_data.BaseDataLayer):
     
@@ -217,7 +216,6 @@ async def main(message: cl.Message):
             await msg.stream_token(chunk["answer"])
 
     await msg.send()
-
 
 @cl.on_stop
 def on_stop():
