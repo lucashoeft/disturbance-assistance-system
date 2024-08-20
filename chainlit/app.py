@@ -23,10 +23,10 @@ from langchain.schema.runnable.config import RunnableConfig
 
 dotenv.load_dotenv()
 
-OPENAI_API_KEY = os.getenv('OPEN_AI_API_KEY')
-LANGFUSE_PUBLIC_KEY = os.getenv('LANGFUSE_PUBLIC_KEY')
-LANGFUSE_SECRET_KEY = os.getenv('LANGFUSE_SECRET_KEY')
-VECTOR_DB = os.getenv('VECTOR_DB')
+OPENAI_API_KEY = os.getenv("OPEN_AI_API_KEY")
+LANGFUSE_PUBLIC_KEY = os.getenv("LANGFUSE_PUBLIC_KEY")
+LANGFUSE_SECRET_KEY = os.getenv("LANGFUSE_SECRET_KEY")
+VECTOR_DB = os.getenv("VECTOR_DB")
 
 class UserFeedbackDataLayer(cl_data.BaseDataLayer):
     
@@ -53,7 +53,12 @@ async def on_chat_start():
 
     # split with https://platform.openai.com/tokenizer
     # message = "Hallo Werker bzw. Werkerin, ich unterstütze Sie bei Ihrer Tätigkeit in der Produktion.\n Ich verfüge über Informationen darüber, wie man Störungen beheben kann. Wie kann ich Ihnen weiterhelfen?"
-    message_chunks = ["Hallo", " Werker", " bzw", ".", " Wer", "ker", "in", ",", " ich", " unterst", "ütze", " Sie", " bei", " Ihrer", " T", "ät", "igkeit", " in", " der", " Produ", "ktion", ".", "\n", "Ich", " ver", "fü", "ge", " über", " Informationen", " darüber", ",", " wie", " man", " St", "ör", "ungen", " be", "he", "ben", " kann", ".", " Wie", " kann", " ich", " Ihnen", " weiter", "h", "elf", "en", "?"]
+    message_chunks = ["Hallo", " Werker", " bzw", ".", " Wer", "ker", "in", ",", 
+                      " ich", " unterst", "ütze", " Sie", " bei", " Ihrer", " T", "ät", "igkeit", 
+                      " in", " der", " Produ", "ktion", ".", "\n", "Ich", " ver", "fü", "ge", 
+                      " über", " Informationen", " darüber", ",", " wie", " man", 
+                      " St", "ör", "ungen", " be", "he", "ben", " kann", ".", " Wie", 
+                      " kann", " ich", " Ihnen", " weiter", "h", "elf", "en", "?"]
     
     msg = cl.Message(content="")
 
@@ -65,26 +70,22 @@ async def on_chat_start():
 
     # Create session_id to store in chainlit cache
     rnd = random.Random()
-    random_uuid = uuid.UUID(int=rnd.getrandbits(128), version=4)
-    session_id = str(random_uuid)
+    session_id = str(uuid.UUID(int=random.getrandbits(128), version=4))
     cl.user_session.set("session_id", session_id)
 
-
     # Connection to Vector DB
-
-    connection_vector_db = "postgresql+psycopg://admin:admin@postgres:5432/vectordb" # Uses psycopg3!
+    connection_vector_db = "postgresql+psycopg://admin:admin@postgres:5432/vectordb" # Uses psycopg3
     
-    vectorstore = PGVector(
+    vector_store = PGVector(
         embeddings=OpenAIEmbeddings(model="text-embedding-3-large", api_key=OPENAI_API_KEY),
         collection_name="disturbances",
         connection=connection_vector_db,
         use_jsonb=True,
     )
-    retriever = vectorstore.as_retriever()
 
+    retriever = vector_store.as_retriever()
 
     # Connection to Chat History
-
     connection_string = "postgresql://admin:admin@postgres:5432/chat_history"
     connection_chat_history = psycopg.connect(connection_string)
     table_name ="chat_history"
@@ -156,7 +157,6 @@ async def on_chat_start():
 
     cl.user_session.set("conversational_rag_chain", conversational_rag_chain)
 
-
     # Connection to Langfuse
 
     langfuse_handler = CallbackHandler(
@@ -184,7 +184,7 @@ async def main(message: cl.Message):
         config=config,
     ):
         if "answer" in chunk:
-            await msg.stream_token(chunk['answer'])
+            await msg.stream_token(chunk["answer"])
 
     await msg.send()
 
@@ -200,6 +200,3 @@ def on_chat_end():
 @cl.on_chat_resume
 async def on_chat_resume(thread: ThreadDict):
     print("User resumed chat from previous session")
-
-
-

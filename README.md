@@ -1,5 +1,9 @@
 # Incident Assistance System
 
+<p align="center">
+<img width="891" alt="Screenshot 2021-05-27 at 16 10 26" src="/assets/images/assistance_system.png">
+</p>
+
 ### Requirements
 
 For using the OpenAI-API add the `.env`-file to the root directory (or just rename `.env.example` to `.env`) containing:

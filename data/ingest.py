@@ -10,11 +10,11 @@ from langchain_postgres.vectorstores import PGVector
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-connection = "postgresql+psycopg://admin:admin@localhost:5433/vectordb"  # Uses psycopg3!
+connection = "postgresql+psycopg://admin:admin@localhost:5433/vectordb"  # Uses psycopg3
 
-vectorstore = PGVector(
+vector_store = PGVector(
     embeddings=OpenAIEmbeddings(model="text-embedding-3-large", api_key=OPENAI_API_KEY),
     collection_name="disturbances",
     connection=connection,
@@ -39,4 +39,4 @@ for doc in loader.load():
     documents_split = text_splitter.create_documents(texts_split, metadatas=[doc.metadata] * len(texts_split))
     
     # Add the documents to the vector store (embeddings are created automatically)
-    vectorstore.add_documents(documents_split)
+    vector_store.add_documents(documents_split)
