@@ -53,18 +53,18 @@ async def on_chat_start():
 
     # split with https://platform.openai.com/tokenizer
     # message = "Hallo Werker bzw. Werkerin, ich unterstütze Sie bei 
-    #            Ihrer Tätigkeit in der Produktion.\n Ich verfüge über 
-    #            Informationen darüber, wie man Störungen beheben kann. 
-    #            Wie kann ich Ihnen weiterhelfen?"
+    #            Ihrer Tätigkeit in der Produktion.\n Ich verfüge 
+    #            über Informationen darüber, wie man Störungen 
+    #            beheben kann. Wie kann ich Ihnen weiterhelfen?"
     message_chunks = ["Hallo", " Werker", " bzw", ".", " Wer", "ker", 
                       "in", ",", " ich", " unterst", "ütze", " Sie", 
                       " bei", " Ihrer", " T", "ät", "igkeit", " in", 
                       " der", " Produ", "ktion", ".", "\n", "Ich", 
                       " ver", "fü", "ge", " über", " Informationen", 
                       " darüber", ",", " wie", " man", " St", "ör", 
-                      "ungen", " be", "he", "ben", " kann", ".", " Wie", 
-                      " kann", " ich", " Ihnen", " weiter", "h", "elf", 
-                      "en", "?"]
+                      "ungen", " be", "he", "ben", " kann", ".", 
+                      " Wie", " kann", " ich", " Ihnen", " weiter", 
+                      "h", "elf", "en", "?"]
     
     msg = cl.Message(content="")
 
@@ -114,9 +114,9 @@ async def on_chat_start():
     contextualize_question_system_prompt = (
         "Basierend auf den Nachrichtenverlauf und der letzten "
         "Nutzereingabe welche sich eventuell auf den "
-        "Nachrichtenverlauf bezieht erstelle eine eigenständige Frage, "
-        "die auch ohne den Nachrichtenverlauf verstanden werden kann. "
-        "Beantworte diese Frage nicht."
+        "Nachrichtenverlauf bezieht erstelle eine eigenständige "
+        "Frage, die auch ohne den Nachrichtenverlauf verstanden "
+        "werden kann. Beantworte diese Frage nicht."
     )
 
     contextualize_quesion_prompt = ChatPromptTemplate.from_messages(
@@ -140,16 +140,17 @@ async def on_chat_start():
     )
 
     system_prompt = (
-        "Du bist ein Assistent zum Beantworten von Fragen zu Störungen "
-        "im Beschichtungsprozess in der Produktion von optischen "
-        "Linsen. Nutze die folgenden Kontextinformationen um darauf "
-        "basierend eine Antwort zu generieren. Sage ich weiß nicht, "
-        "wenn du die Frage nicht beantworten kannst. Frage nach einer "
-        "Beschreibung der Situation, um mehr Informationen zu erhalten "
-        "und ob die Informationen geholfen haben. Sieze immer, also "
-        "verwende Sie anstatt Du. Der Hinweis darf nicht sein "
-        "die Maschine auzuschalten. Die Kontextinformationen aus den "
-        "Dokumenten sind wichtiger als der Nachrichtenverlauf"
+        "Du bist ein Assistent zum Beantworten von Fragen zu " 
+        "Störungen im Beschichtungsprozess in der Produktion von " 
+        "optischen Linsen. Nutze die folgenden Kontextinformationen "
+        "um darauf basierend eine Antwort zu generieren. Sage ich "
+        "weiß nicht, wenn du die Frage nicht beantworten kannst. "
+        "Frage nach einer Beschreibung der Situation, um mehr "
+        "Informationen zu erhalten und ob die Informationen geholfen " 
+        "haben. Sieze immer, also verwende Sie anstatt Du. Der "
+        "Hinweis darf nicht sein die Maschine auzuschalten. Die "
+        "Kontextinformationen aus den Dokumenten sind wichtiger als "
+        "der Nachrichtenverlauf"
         "\n\n"
         "{context}"
     )
@@ -183,7 +184,6 @@ async def on_chat_start():
     cl.user_session.set("conversational_rag_chain", conversational_rag_chain)
 
     # Connection to Langfuse
-
     langfuse_handler = CallbackHandler(
         public_key=LANGFUSE_PUBLIC_KEY,
         secret_key=LANGFUSE_SECRET_KEY,
