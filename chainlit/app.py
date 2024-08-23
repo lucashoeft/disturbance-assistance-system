@@ -21,6 +21,8 @@ from langfuse.callback import CallbackHandler
 from langfuse import Langfuse
 from langchain.schema.runnable.config import RunnableConfig
 
+# Reference https://python.langchain.com/v0.1/docs/use_cases/question_answering/chat_history/
+
 dotenv.load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPEN_AI_API_KEY")
