@@ -75,10 +75,11 @@ async def on_chat_start():
 
     await msg.send()
 
-    # Create session_id to store in chainlit cache
-    rnd = random.Random()
-    session_id = str(uuid.UUID(int=random.getrandbits(128), version=4))
-    cl.user_session.set("session_id", session_id)
+    llm = ChatOpenAI(
+        model="gpt-4o-mini", 
+        streaming=True, 
+        api_key=OPENAI_API_KEY
+    )
 
     # Connection to Vector DB uses psycopg3
     connection_vector_db = "postgresql+psycopg://admin:admin@postgres:5432/vectordb" 
@@ -92,6 +93,11 @@ async def on_chat_start():
     )
 
     retriever = vector_store.as_retriever()
+
+    # Create session_id to store in chainlit cache
+    rnd = random.Random()
+    session_id = str(uuid.UUID(int=random.getrandbits(128), version=4))
+    cl.user_session.set("session_id", session_id)
 
     # Connection to Chat History
     connection_string = "postgresql://admin:admin@postgres:5432/chat_history"
@@ -126,12 +132,6 @@ async def on_chat_start():
             MessagesPlaceholder("chat_history"),
             ("human", "{input}"),
         ]
-    )
-
-    llm = ChatOpenAI(
-        model="gpt-4o-mini", 
-        streaming=True, 
-        api_key=OPENAI_API_KEY
     )
 
     history_aware_retriever = create_history_aware_retriever(
